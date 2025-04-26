@@ -36,8 +36,7 @@ class Ticket(models.Model):
     urgencia = models.CharField(max_length=10, choices=[('alta', 'Alta'), ('media', 'Media'), ('baja', 'Baja')])
     tipo = models.CharField(max_length=15, choices=[('averia', 'Avería'), ('mejora', 'Mejora'), ('mantenimiento', 'Mantenimiento')])
     estado = models.CharField(max_length=10, choices=[('abierto', 'Abierto'), ('cerrado', 'Cerrado')])
-    empleado_asignado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, null=True)  # ONE TO MANY
-    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)  
-
+    empleado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, null=True)  # ONE TO MANY
+    equipos = models.ManyToManyField(Equipo) 
     def __str__(self):
         return f"{self.titulo} - {self.referencia}"  
