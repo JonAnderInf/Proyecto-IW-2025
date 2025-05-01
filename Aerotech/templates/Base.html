@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aerotech S. L.</title>
+</head>
+
+<body>
+   <header class="site-header">
+    <img src="FALTA IMAGEN DEL LOGO"alt="Logo" class="header-icon">
+    <h1>⚙️Gestor - Aerotech S. L.⚙️</h1>
+   </header>
+
+    <div id="content">
+        <h2>Menú</h2>
+        <div class="cajas-menu">
+
+            <div class="categoria">
+                <h2>👷 Empleados 👷</h2>
+                <ul>
+                    <li><a href="/appDjango/empleados">Lista de empleados</a></li>
+                    <li><a href="{% url 'empleado_create' %}">Registrar nuevo empleado</a></li>
+                </ul>
+            </div>
+
+            <div class="categoria">
+                <h2>🛠️ Tickets 🛠️</h2>
+                <ul>
+                    <li><a href="/appDjango/tickets">Lista de tickets</a></li>
+                    <li><a href="{% url 'ticket_create' tipo='mantenimiento' %}">Nuevo ticket de Mantenimiento</a></li>
+                    <li><a href="{% url 'ticket_create' tipo='averia' %}">Nuevo ticket de Avería</a></li>
+                    <li><a href="{% url 'ticket_create' tipo='mejora' %}">Nuevo ticket de Mejora</a></li>
+                </ul>
+            </div>
+
+            <div class="categoria">
+                <h2>🏗️ Equipos 🏗️</h2>
+                <ul>
+                    <li><a href="/Aerotech/equipos">Lista de equipos</a></li>
+                    <li><a href="{% url 'equipo_create' %}">Registrar nuevo equipo</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        {% block contenido %}{% endblock %}
+    </div>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="contacto">
+                <h2>Contacto</h2>
+                <p>Email: Aerotech.SL@example.com</p>
+                <p>Teléfono: (+34) 945 454 569</p>
+            </div>
+        </div>
+        <div class="derechos">
+            <p>&copy; 2025 Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
