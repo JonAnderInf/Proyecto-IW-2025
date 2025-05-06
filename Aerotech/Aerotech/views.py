@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy  
 from .models import Empleado, Equipo, Ticket
 from .forms import TicketForm, EmpleadoForm, EquipoForm
+from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 
 
 # VISTAS DE EMPLEADOS Vistas CON CLASES
@@ -8,7 +10,7 @@ from .forms import TicketForm, EmpleadoForm, EquipoForm
 class ListaEmpleados(ListView):
     model = Empleado
     template_name = 'lista_empleados.html'
-    context_object_name = 'empleado'
+    context_object_name = 'empleados'  # Nose si podemos poner 'empleado'
 
 
 # vista de detalle de los empleados
@@ -20,10 +22,11 @@ class DetalleEmpleado(DetailView):
 
 # vista de creacion de empleados
 class CrearEmpleado(CreateView):
-  template_name = 'crear_empleado.html'
-  form_class = EmpleadoForm
-  model = Empleado
-  success_url = reverse_lazy('listar-empleados')
+    template_name = 'crear_empleado.html'
+    form_class = EmpleadoForm
+    model = Empleado
+    success_url = reverse_lazy('listar-empleados')
+
 
 # vista de eliminacion de producto
 class EliminarEmpleado(DeleteView):
@@ -40,9 +43,7 @@ class ModificarEmpleado(UpdateView):
     success_url = reverse_lazy('listar-empleados')
 
 
-
 # Vistas sin CLASES
-
 def lista_empleados(request):
     empleados = Empleado.objects.all()
     return render(request, 'lista_empleados.html', {'empleados': empleados})
@@ -54,7 +55,6 @@ def lista_tickets(request):
 def lista_equipos(request):
     equipos = Equipo.objects.all()
     return render(request, 'lista_equipos.html', {'equipos': equipos})
-
 
 
 def crear_ticket(request):
