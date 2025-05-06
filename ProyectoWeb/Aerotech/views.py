@@ -48,9 +48,6 @@ class ModificarEmpleado(UpdateView):
 def home(request):
     return render(request, 'home.html')
 
-def lista_empleados(request):
-    empleados = Empleado.objects.all()
-    return render(request, 'lista_empleados.html', {'empleados': empleados})
 
 def lista_tickets(request):
     tickets = Ticket.objects.select_related('empleado').prefetch_related('equipo').all()
@@ -71,15 +68,6 @@ def crear_ticket(request):
         form = TicketForm()
     return render(request, 'crear_ticket.html', {'form': form})
 
-def crear_empleado(request):
-    if request.method == 'POST':
-        form = EmpleadoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_empleados')
-    else:
-        form = EmpleadoForm()
-    return render(request, 'crear_empleado.html', {'form': form})
 
 def crear_equipo(request):
     if request.method == 'POST':
