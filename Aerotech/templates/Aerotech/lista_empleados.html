@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Empleados</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f7f7f7;
-        }
-        h1 {
-            color: #333;
-        }
-        table {
-            width: 80%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            background-color: white;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
-</head>
+{% extends 'base.html' %}
+{% block title %} Listado de Empleados {% endblock %}
+
+{% block content %}
+
+
 <body>
 
     <h1>Lista de Empleados</h1>
@@ -50,6 +22,9 @@
                 <td>{{ empleado.nombre }}</td>
                 <td>{{ empleado.apellidos }}</td>
                 <td>{{ empleado.email }}</td>
+                <td><a href="{% url 'detalle-empleado' empleado.id%}">Detalles</a></td>
+                <td><a href="{% url 'eliminar-empleado' empleado.id%}">Borrar</a></td>
+                <td><a href="{% url 'modificar-empleado' empleado.id%}">Modificar</a></td>
             </tr>
             {% empty %}
             <tr>
@@ -60,4 +35,3 @@
     </table>
 
 </body>
-</html>
