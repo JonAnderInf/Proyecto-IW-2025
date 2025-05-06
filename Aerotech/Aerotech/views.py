@@ -86,3 +86,10 @@ def crear_equipo(request):
     else:
         form = EquipoForm()
     return render(request, 'Aerotech/crear_equipo.html', {'form': form})
+
+
+
+
+
+def index_view(request):
+    return render(request, 'index.html')  # cualquier otra plantilla prueba ???
