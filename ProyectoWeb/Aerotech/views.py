@@ -25,14 +25,14 @@ class CrearEmpleado(CreateView):
     template_name = 'crear_empleado.html'
     form_class = EmpleadoForm
     model = Empleado
-    success_url = reverse_lazy('listar-empleados')
+    success_url = reverse_lazy('lista-empleados')
 
 
 # vista de eliminacion de producto
 class EliminarEmpleado(DeleteView):
     model = Empleado
     template_name = 'eliminar_empleado.html'
-    success_url = reverse_lazy('listar-empleados')
+    success_url = reverse_lazy('lista-empleados')
 
 
 # vista de modificacion de producto
@@ -40,11 +40,10 @@ class ModificarEmpleado(UpdateView):
     model = Empleado
     template_name = 'modificar_empleado.html'
     form_class = EmpleadoForm
-    success_url = reverse_lazy('listar-empleados')
+    success_url = reverse_lazy('lista-empleados')
 
 
 # Vistas sin CLASES
-
 
 def home(request):
     return render(request, 'home.html')
@@ -70,7 +69,7 @@ def crear_ticket(request):
             return redirect('lista_tickets')
     else:
         form = TicketForm()
-    return render(request, 'Aerotech/crear_ticket.html', {'form': form})
+    return render(request, 'crear_ticket.html', {'form': form})
 
 def crear_empleado(request):
     if request.method == 'POST':
@@ -80,7 +79,7 @@ def crear_empleado(request):
             return redirect('lista_empleados')
     else:
         form = EmpleadoForm()
-    return render(request, 'Aerotech/crear_empleado.html', {'form': form})
+    return render(request, 'crear_empleado.html', {'form': form})
 
 def crear_equipo(request):
     if request.method == 'POST':
@@ -90,12 +89,9 @@ def crear_equipo(request):
             return redirect('lista_equipos')
     else:
         form = EquipoForm()
-    return render(request, 'Aerotech/crear_equipo.html', {'form': form})
+    return render(request, 'crear_equipo.html', {'form': form})
 
 
 
 
-
-# def index_view(request):
-#     return render(request, 'index.html')  # cualquier otra plantilla prueba ???
 

@@ -11,6 +11,7 @@ class EmpleadoForm(forms.ModelForm):
         model = Empleado
         fields = '__all__'
 
+
 class EquipoForm(forms.ModelForm):
     class Meta:
         model = Equipo
