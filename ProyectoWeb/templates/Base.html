@@ -10,30 +10,22 @@
 </head>
 
 <body>
-
-    <img src="" alt="Logo" class="header-icon">
-    <h1>⚙️Gestor - Aerotech S. L.⚙️</h1>
-
-    <a href="{% url 'listar-empleado' %}"> Lista de empleados </a><br>
-    <a href="{% url 'crear-empleado' %}"> Crear empleado </a><br><br><br>
-
+    
     {% block content %}
     {% endblock %}
 
-
-</body>
-
-<footer>
-    <div class="contenedor-footer">
-        <div class="contacto">
-            <h2>Contacto</h2>
-            <p>Email: Aerotech.SL@example.com</p>
-            <p>Teléfono: (+34) 945 454 569</p>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="contacto">
+                <h2>Contacto</h2>
+                <p>Email: Aerotech.SL@example.com</p>
+                <p>Teléfono: (+34) 945 454 569</p>
+            </div>
         </div>
-    </div>
-    <div class="derechos">
-        <p>&copy; 2025 Todos los derechos reservados</p>
-    </div>
-</footer>
+        <div class="derechos">
+            <p>&copy; 2025 Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
 
 </html>

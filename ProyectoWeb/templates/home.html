@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Listado de Empleados {% endblock %}
+{% block content %}
+
+
+<img src="" alt="Logo" class="header-icon">
+<h1>⚙️Gestor - Aerotech S. L.⚙️</h1>
+
+<a href="{% url 'lista-empleados' %}"> Lista de empleados </a><br>
+<a href="{% url 'crear-empleado' %}"> Crear empleado </a><br><br><br>
+
+{% endblock %}
