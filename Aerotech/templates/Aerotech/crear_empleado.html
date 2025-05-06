@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
-{% block contenido %}
-    <h2> Crear nuevo empleado </h2>
-    <form action="{% url 'crear-empleado' %}" method="post">
-        {{form.as_p}}
-        {% csrf_token %}
-        <button type = "submit"></button>
-        <a href="{% url 'listar-empleados'}">Volver</a>
+{% block title %} Crear empleado {% endblock %}
 
-    </form>
-    
+{% block content %}
+
+<h2> Crear nuevo empleado </h2>
+<form action="{% url 'crear-empleado' %}" method="post">
+    {{form.as_p}}
+    {% csrf_token %}
+    <button type="submit"></button>
+    <a href="{% url 'listar-empleados'}">Volver</a>
+
+</form>
+
 {% endblock %}
