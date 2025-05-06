@@ -8,7 +8,7 @@ class Empleado(models.Model):
     telefono = models.CharField(max_length=15)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellidos}"
+        return f" Nombre {self.nombre} Apellidos {self.apellidos}"
     
 
 class Equipo(models.Model):
