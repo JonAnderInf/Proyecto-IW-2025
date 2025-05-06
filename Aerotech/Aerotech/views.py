@@ -2,6 +2,47 @@ from django.shortcuts import render, redirect
 from .models import Empleado, Equipo, Ticket
 from .forms import TicketForm, EmpleadoForm, EquipoForm
 
+
+# VISTAS DE EMPLEADOS Vistas CON CLASES
+# vista para listar empleados
+class ListaEmpleados(ListView):
+    model = Empleado
+    template_name = 'lista_empleados.html'
+    context_object_name = 'empleado'
+
+
+# vista de detalle de los empleados
+class DetalleEmpleado(DetailView):
+    model = Empleado
+    template_name = 'detalles_empleado.html'
+    context_object_name = 'empleado'
+
+
+# vista de creacion de empleados
+class CrearEmpleado(CreateView):
+  template_name = 'crear_empleado.html'
+  form_class = EmpleadoForm
+  model = Empleado
+  success_url = reverse_lazy('listar-empleados')
+
+# vista de eliminacion de producto
+class EliminarEmpleado(DeleteView):
+    model = Empleado
+    template_name = 'eliminar_empleado.html'
+    success_url = reverse_lazy('listar-empleados')
+
+
+# vista de modificacion de producto
+class ModificarEmpleado(UpdateView):
+    model = Empleado
+    template_name = 'modificar_empleado.html'
+    form_class = EmpleadoForm
+    success_url = reverse_lazy('listar-empleados')
+
+
+
+# Vistas sin CLASES
+
 def lista_empleados(request):
     empleados = Empleado.objects.all()
     return render(request, 'lista_empleados.html', {'empleados': empleados})
