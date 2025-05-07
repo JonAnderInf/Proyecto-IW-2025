@@ -10,7 +10,7 @@ from django.views.generic import ListView, DeleteView, DetailView, CreateView, U
 class ListaEmpleados(ListView):
     model = Empleado
     template_name = 'lista_empleados.html'
-    context_object_name = 'empleados'  # Nose si podemos poner 'empleado'
+    context_object_name = 'empleados' 
 
 
 # vista de detalle de los empleados
@@ -44,20 +44,21 @@ class ModificarEmpleado(UpdateView):
 
 
 # Vistas sin CLASES
-
+#página principal
 def home(request):
     return render(request, 'home.html')
 
-
+#lista tickets
 def lista_tickets(request):
     tickets = Ticket.objects.select_related('empleado').prefetch_related('equipo').all()
     return render(request, 'lista_tickets.html', {'tickets': tickets})
 
+#lista equipos
 def lista_equipos(request):
     equipos = Equipo.objects.all()
     return render(request, 'lista_equipos.html', {'equipos': equipos})
 
-
+#crear ticket
 def crear_ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
@@ -68,7 +69,7 @@ def crear_ticket(request):
         form = TicketForm()
     return render(request, 'crear_ticket.html', {'form': form})
 
-
+#crear equipo
 def crear_equipo(request):
     if request.method == 'POST':
         form = EquipoForm(request.POST)
