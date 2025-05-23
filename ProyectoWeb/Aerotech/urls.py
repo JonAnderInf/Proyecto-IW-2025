@@ -18,7 +18,11 @@ urlpatterns = [
     path('equipo/<int:pk>/eliminar/', views.EliminarEquipo.as_view(), name='eliminar-equipo'),
     path('equipo/<int:pk>/modificar/', views.ModificarEquipo.as_view(), name='modificar-equipo'),
 
-    # Tickets 
-    path('tickets/', views.lista_tickets, name='lista_tickets'),
-    path('crear_ticket/', views.crear_ticket, name='crear_ticket'),
+   
+    #urls ticket
+    path('tickets/', ListaTickets.as_view(), name='lista-tickets'),
+    path('tickets/crear/', CrearTicket.as_view(), name='crear-ticket'),
+    path('tickets/<int:pk>/', DetalleTicket.as_view(), name='detalle-ticket'),
+    path('tickets/<int:pk>/modificar/', ModificarTicket.as_view(), name='modificar-ticket'),
+    path('tickets/<int:pk>/eliminar/', EliminarTicket.as_view(), name='eliminar-ticket'),
 ]

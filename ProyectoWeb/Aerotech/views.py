@@ -49,23 +49,38 @@ class ModificarEmpleado(UpdateView):
 def home(request):
     return render(request, 'home.html')
 
-#lista tickets
-def lista_tickets(request):
-    tickets = Ticket.objects.select_related('empleado').prefetch_related('equipo').all()
-    return render(request, 'lista_tickets.html', {'tickets': tickets})
+# VISTAS DE TICKET CON CLASES
+# vista de listar tickets
+class ListaTickets(ListView):
+    model = Ticket
+    template_name = 'lista_tickets.html'    
+    context_object_name = 'tickets'
 
-#crear ticket
-def crear_ticket(request):
-    if request.method == 'POST':
-        form = TicketForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_tickets')
-    else:
-        form = TicketForm()
-    return render(request, 'crear_ticket.html', {'form': form})
+# vista de creación de tickets
+class CrearTicket(CreateView):
+    model = Ticket
+    form_class = TicketForm
+    template_name = 'crear_ticket.html'
+    success_url = reverse_lazy('lista-tickets') 
 
+# vista de detalles  de tickets
+class DetalleTicket(DetailView):
+    model = Ticket
+    template_name = 'detalles_ticket.html'
+    context_object_name = 'ticket'
 
+# vista de modificación de tickets
+class ModificarTicket(UpdateView):
+    model = Ticket
+    form_class = TicketForm
+    template_name = 'modificar_ticket.html'
+    success_url = reverse_lazy('lista-tickets')
+
+# vista de eliminación de tickets
+class EliminarTicket(DeleteView):
+    model = Ticket
+    template_name = 'eliminar_ticket.html'
+    success_url = reverse_lazy('lista-tickets')
 
 
 

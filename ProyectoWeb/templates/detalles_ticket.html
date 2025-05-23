@@ -1,0 +1,34 @@
+{% extends 'Base.html' %}
+
+{% block title %} Detalles ticket {% endblock %}
+
+{% block content %}
+<h2>Detalles del ticket '{{ ticket.titulo }} - {{ ticket.referencia }}'</h2>
+
+<ul>
+    <li><strong>Referencia:</strong> {{ ticket.referencia }}</li>
+    <li><strong>Título:</strong> {{ ticket.titulo }}</li>
+    <li><strong>Descripción:</strong> {{ ticket.descripcion }}</li>
+    <li><strong>Fecha de apertura:</strong> {{ ticket.fecha_apertura }}</li>
+    <li><strong>Fecha de resolución:</strong> {{ ticket.fecha_resolucion|default:"Pendiente" }}</li>
+    <li><strong>Urgencia:</strong> {{ ticket.get_urgencia_display }}</li>
+    <li><strong>Tipo:</strong> {{ ticket.get_tipo_display }}</li>
+    <li><strong>Estado:</strong> {{ ticket.get_estado_display }}</li>
+    <li><strong>Empleado asignado:</strong> 
+        {% if ticket.empleado %}
+            {{ ticket.empleado.nombre }} {{ ticket.empleado.apellidos }}
+        {% else %}
+            No asignado
+        {% endif %}
+    </li>
+    <li><strong>Equipos relacionados:</strong>
+        <ul>
+            {% for equipo in ticket.equipos.all %}
+                <li>{{ equipo.modelo }} - {{ equipo.numero_serie }}</li>
+            {% empty %}
+                <li>No hay equipos asignados</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endblock %}
