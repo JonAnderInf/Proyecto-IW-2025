@@ -1,6 +1,14 @@
-<h1>Crear Equipo</h1>
-<form method="post">
+{% extends 'Base.html' %}
+{% block title %}Crear equipo{% endblock %}
+
+{% block content %}
+<h2>Crear nuevo equipo</h2>
+
+<form action="{% url 'crear-equipo' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button type="submit">Crear</button>
 </form>
+
+<a href="{% url 'home' %}">Volver</a>
+{% endblock %}

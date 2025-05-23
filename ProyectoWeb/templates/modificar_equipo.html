@@ -1,0 +1,16 @@
+{% extends 'Base.html' %}
+{% block title %} Modificar equipo {% endblock %}
+
+{% block content %}
+
+<h2> Modificar un equipo </h2>
+<form action="" method="post">
+
+    {{form.as_p}}
+    {% csrf_token %}
+    <button type="submit">Guardar</button>
+    <a href="{% url 'lista-equipos'}">Volver</a>
+
+</form>
+
+{% endblock %}

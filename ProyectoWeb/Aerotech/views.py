@@ -44,6 +44,7 @@ class ModificarEmpleado(UpdateView):
 
 
 # Vistas sin CLASES
+
 #página principal
 def home(request):
     return render(request, 'home.html')
@@ -52,11 +53,6 @@ def home(request):
 def lista_tickets(request):
     tickets = Ticket.objects.select_related('empleado').prefetch_related('equipo').all()
     return render(request, 'lista_tickets.html', {'tickets': tickets})
-
-#lista equipos
-def lista_equipos(request):
-    equipos = Equipo.objects.all()
-    return render(request, 'lista_equipos.html', {'equipos': equipos})
 
 #crear ticket
 def crear_ticket(request):
@@ -69,16 +65,49 @@ def crear_ticket(request):
         form = TicketForm()
     return render(request, 'crear_ticket.html', {'form': form})
 
-#crear equipo
-def crear_equipo(request):
-    if request.method == 'POST':
-        form = EquipoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_equipos')
-    else:
-        form = EquipoForm()
-    return render(request, 'crear_equipo.html', {'form': form})
+
+
+
+
+
+# VISTAS DE EQUIPOS Vistas CON CLASES
+
+# Listar equipos
+class ListaEquipos(ListView):
+    model = Equipo
+    template_name = 'lista_equipos.html'
+    context_object_name = 'equipos'
+
+
+# Detalle de equipo
+class DetalleEquipo(DetailView):
+    model = Equipo
+    template_name = 'detalles_equipo.html'
+    context_object_name = 'equipo'
+
+
+# Crear equipo
+class CrearEquipo(CreateView):
+    model = Equipo
+    template_name = 'crear_equipo.html'
+    form_class = EquipoForm
+    success_url = reverse_lazy('lista-equipos')
+
+
+# Eliminar equipo
+class EliminarEquipo(DeleteView):
+    model = Equipo
+    template_name = 'eliminar_equipo.html'
+    success_url = reverse_lazy('lista-equipos')
+
+
+# Modificar equipo
+class ModificarEquipo(UpdateView):
+    model = Equipo
+    template_name = 'modificar_equipo.html'
+    form_class = EquipoForm
+    success_url = reverse_lazy('lista-equipos')
+
 
 
 
