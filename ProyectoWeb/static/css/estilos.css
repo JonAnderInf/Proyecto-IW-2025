@@ -1,4 +1,60 @@
-/*  LISTADO DE EMPLEADOS */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    line-height: 1.5;
+}
+
+/*--------------------------------------------------------------------------- Contenido principal del BASE.html------------------------------------------------------------------------------- */
+main {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ---------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------- */
+footer {
+    background-color: #0a3d62; 
+    color: #fff;
+    padding: 20px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.contenedor-footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contacto h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.contacto p {
+    margin-bottom: 6px;
+}
+
+.derechos {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: 0.75;
+    font-style: italic;
+}
+
+    .contacto {
+        margin-bottom: 15px;
+    }
+
+
+/*  -------------------------------------------------------------------------------------------------------LISTADO DE EMPLEADOS---------------------------------------------------------- */
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
