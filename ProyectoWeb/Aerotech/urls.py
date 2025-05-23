@@ -20,9 +20,9 @@ urlpatterns = [
 
    
     #urls ticket
-    path('tickets/', ListaTickets.as_view(), name='lista-tickets'),
-    path('tickets/crear/', CrearTicket.as_view(), name='crear-ticket'),
-    path('tickets/<int:pk>/', DetalleTicket.as_view(), name='detalle-ticket'),
-    path('tickets/<int:pk>/modificar/', ModificarTicket.as_view(), name='modificar-ticket'),
-    path('tickets/<int:pk>/eliminar/', EliminarTicket.as_view(), name='eliminar-ticket'),
+    path('tickets/', views.ListaTickets.as_view(), name='lista-tickets'),
+    path('tickets/crear/', views.CrearTicket.as_view(), name='crear-ticket'),
+    path('tickets/<int:pk>/', views.DetalleTicket.as_view(), name='detalle-ticket'),
+    path('tickets/<int:pk>/modificar/', views.ModificarTicket.as_view(), name='modificar-ticket'),
+    path('tickets/<int:pk>/eliminar/', views.EliminarTicket.as_view(), name='eliminar-ticket'),
 ]
