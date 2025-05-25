@@ -11,6 +11,7 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
+            <th>Username</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
             <td>{{ empleado.nombre }}</td>
             <td>{{ empleado.apellidos }}</td>
             <td>{{ empleado.email }}</td>
+            <td>{{ empleado.username }}</td>
             <td>
                 <a href="{% url 'detalles-empleado' empleado.id %}">Detalles</a> |
                 <a href="{% url 'eliminar-empleado' empleado.id %}">Borrar</a> |

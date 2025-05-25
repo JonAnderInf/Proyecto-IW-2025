@@ -4,9 +4,10 @@
 {% block content %}
 <h2>Crear nuevo empleado</h2>
 
-<form action="{% url 'crear-empleado' %}" method="post">
+<form id="empleadoForm" action="{% url 'crear-empleado' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <div id="errores"></div>
     <button type="submit">Crear</button>
 </form>
 

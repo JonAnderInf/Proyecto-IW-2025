@@ -6,6 +6,9 @@ class Empleado(models.Model):
     apellidos = models.CharField(max_length=150)
     email = models.EmailField()
     telefono = models.CharField(max_length=15)
+    username = models.CharField(max_length=150, unique=True, null=True, blank=True)
+
+
 
     def __str__(self):
         return f" Nombre {self.nombre} Apellidos {self.apellidos}"
@@ -24,7 +27,7 @@ class Equipo(models.Model):
     empleados = models.ManyToManyField(Empleado, related_name="equipos_asignados") 
 
 
-def __str__(self):
+    def __str__(self):
         return f"{self.modelo} - {self.numero_serie}"
 
 class Ticket(models.Model):
@@ -38,5 +41,6 @@ class Ticket(models.Model):
     estado = models.CharField(max_length=10, choices=[('abierto', 'Abierto'), ('cerrado', 'Cerrado')])
     empleado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, null=True)  # ONE TO MANY
     equipos = models.ManyToManyField(Equipo) 
+
     def __str__(self):
         return f"{self.titulo} - {self.referencia}"  
