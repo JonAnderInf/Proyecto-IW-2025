@@ -87,11 +87,17 @@ class EliminarTicket(DeleteView):
 
 # VISTAS DE EQUIPOS Vistas CON CLASES
 
-# Listar equipos
+# Listar equipos // PRUEBA FILTRO 
 class ListaEquipos(ListView):
     model = Equipo
     template_name = 'lista_equipos.html'
     context_object_name = 'equipos'
+
+    def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['Equipo'] = Equipo
+    return context
+
 
 
 # Detalle de equipo

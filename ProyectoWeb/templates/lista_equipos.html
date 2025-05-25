@@ -48,4 +48,30 @@
 
 <a href="{% url 'home' %}">Volver</a>
 
+
+
+
+<form method="get" class="mb-3">
+  <select name="marca">
+    <option value="">Todas las marcas</option>
+    {% for valor, nombre in Equipo.MARCAS %}
+      <option value="{{ valor }}" {% if request.GET.marca == valor %}selected{% endif %}>{{ nombre }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="tipo">
+    <option value="">Todos los tipos</option>
+    {% for valor, nombre in Equipo.TIPOS %}
+      <option value="{{ valor }}" {% if request.GET.tipo == valor %}selected{% endif %}>{{ nombre }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Buscar</button>
+  <a href="{% url 'lista-equipos' %}">Limpiar</a>
+</form>
+
+
+
+
+
 {% endblock %}
