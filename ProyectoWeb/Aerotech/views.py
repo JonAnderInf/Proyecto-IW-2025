@@ -5,7 +5,7 @@ from .forms import TicketForm, EmpleadoForm, EquipoForm
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 
 
-# VISTAS DE EMPLEADOS Vistas CON CLASES
+# ----------------------------------------------------------------------------VISTAS DE EMPLEADOS -----------------------------------------------------------------------------------------------------------------
 # vista para listar empleados
 class ListaEmpleados(ListView):
     model = Empleado
@@ -28,14 +28,14 @@ class CrearEmpleado(CreateView):
     success_url = reverse_lazy('lista-empleados')
 
 
-# vista de eliminacion de producto
+# vista de eliminacion de empleados
 class EliminarEmpleado(DeleteView):
     model = Empleado
     template_name = 'eliminar_empleado.html'
     success_url = reverse_lazy('lista-empleados')
 
 
-# vista de modificacion de producto
+# vista de modificacion de empleados
 class ModificarEmpleado(UpdateView):
     model = Empleado
     template_name = 'modificar_empleado.html'
@@ -43,18 +43,32 @@ class ModificarEmpleado(UpdateView):
     success_url = reverse_lazy('lista-empleados')
 
 
-# Vistas sin CLASES
+
 
 #página principal
 def home(request):
     return render(request, 'home.html')
 
-# VISTAS DE TICKET CON CLASES
+# ----------------------------------------------------------------------------VISTAS DE TICKETS/FILTRO (1) -----------------------------------------------------------------------------------------------------------------
 # vista de listar tickets
 class ListaTickets(ListView):
     model = Ticket
-    template_name = 'lista_tickets.html'    
+    template_name = 'lista_tickets.html'
     context_object_name = 'tickets'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        estado = self.request.GET.get('estado')
+
+        if estado:
+            queryset = queryset.filter(estado=estado)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['estados'] = Ticket.objects.values_list('estado', flat=True).distinct()
+        return context
 
 # vista de creación de tickets
 class CrearTicket(CreateView):
@@ -85,9 +99,11 @@ class EliminarTicket(DeleteView):
 
 
 
-# VISTAS DE EQUIPOS Vistas CON CLASES
 
-# Listar equipos // PRUEBA FILTRO 
+
+# ----------------------------------------------------------------------------VISTAS DE EQUIPOS/FILTRO (2) -----------------------------------------------------------------------------------------------------------------
+
+# vista de listar equipos
 class ListaEquipos(ListView):
     model = Equipo
     template_name = 'lista_equipos.html'
@@ -112,14 +128,14 @@ class ListaEquipos(ListView):
         return context
 
 
-# Detalle de equipo
+# Detalle de equipos
 class DetalleEquipo(DetailView):
     model = Equipo
     template_name = 'detalles_equipo.html'
     context_object_name = 'equipo'
 
 
-# Crear equipo
+# Crear equipos
 class CrearEquipo(CreateView):
     model = Equipo
     template_name = 'crear_equipo.html'
@@ -127,14 +143,14 @@ class CrearEquipo(CreateView):
     success_url = reverse_lazy('lista-equipos')
 
 
-# Eliminar equipo
+# Eliminar equipos
 class EliminarEquipo(DeleteView):
     model = Equipo
     template_name = 'eliminar_equipo.html'
     success_url = reverse_lazy('lista-equipos')
 
 
-# Modificar equipo
+# Modificar equipos
 class ModificarEquipo(UpdateView):
     model = Equipo
     template_name = 'modificar_equipo.html'
