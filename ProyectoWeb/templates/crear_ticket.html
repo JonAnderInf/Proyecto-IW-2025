@@ -1,6 +1,13 @@
-<h1>Crear Ticket</h1>
+{% extends 'Base.html' %}
+{% block title %}Crear equipo{% endblock %}
+
+{% block content %}
+<h2>Crear Ticket</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Guardar</button>
 </form>
+
+<a href="{% url 'home' %}">Volver</a>
+{% endblock %}
