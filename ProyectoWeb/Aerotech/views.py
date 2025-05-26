@@ -93,11 +93,23 @@ class ListaEquipos(ListView):
     template_name = 'lista_equipos.html'
     context_object_name = 'equipos'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        marca = self.request.GET.get('marca')
+        tipo = self.request.GET.get('tipo')
+
+        if marca:
+            queryset = queryset.filter(marca=marca)
+        if tipo:
+            queryset = queryset.filter(tipo=tipo)
+
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['Equipo'] = Equipo
+        context['marcas'] = Equipo.objects.values_list('marca', flat=True).distinct()
+        context['tipos'] = Equipo.objects.values_list('tipo', flat=True).distinct()
         return context
-
 
 
 # Detalle de equipo

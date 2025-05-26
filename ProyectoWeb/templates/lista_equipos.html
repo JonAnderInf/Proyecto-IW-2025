@@ -5,6 +5,30 @@
 
 <h1>Lista de Equipos</h1>
 
+<!-------------------------------------------------------------------- FORMULARIO DE FILTRO ------------------------------------------------->
+<h2>Buscar Equipos</h2>
+<form method="get" class="mb-3">
+  <label>Marca:</label>
+  <select name="marca">
+    <option value="">Todas las marcas</option>
+    {% for marca in marcas %}
+      <option value="{{ marca }}" {% if request.GET.marca == marca %}selected{% endif %}>{{ marca }}</option>
+    {% endfor %}
+  </select>
+
+  <label>Tipo:</label>
+  <select name="tipo">
+    <option value="">Todos los tipos</option>
+    {% for tipo in tipos %}
+      <option value="{{ tipo }}" {% if request.GET.tipo == tipo %}selected{% endif %}>{{ tipo }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Buscar</button>
+  <a href="{% url 'lista-equipos' %}">Limpiar</a>
+</form>
+
+<!-----------------------------------------------------------------------------------------TABLA FILTRADA ---------------------------------------------------------------->
 <table>
     <thead>
         <tr>
@@ -40,38 +64,12 @@
         </tr>
         {% empty %}
         <tr>
-            <td colspan="10">No hay equipos disponibles.</td>
+            <td colspan="10">No se encontraron equipos con esos filtros.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
 <a href="{% url 'home' %}">Volver</a>
-
-
-
-
-<form method="get" class="mb-3">
-  <select name="marca">
-    <option value="">Todas las marcas</option>
-    {% for valor, nombre in Equipo.MARCAS %}
-      <option value="{{ valor }}" {% if request.GET.marca == valor %}selected{% endif %}>{{ nombre }}</option>
-    {% endfor %}
-  </select>
-
-  <select name="tipo">
-    <option value="">Todos los tipos</option>
-    {% for valor, nombre in Equipo.TIPOS %}
-      <option value="{{ valor }}" {% if request.GET.tipo == valor %}selected{% endif %}>{{ nombre }}</option>
-    {% endfor %}
-  </select>
-
-  <button type="submit">Buscar</button>
-  <a href="{% url 'lista-equipos' %}">Limpiar</a>
-</form>
-
-
-
-
 
 {% endblock %}
