@@ -1,11 +1,13 @@
 // FUNCIONALIDAD 1: Cambiar tamaño del texto
 function cambiarTamano(factor) {
-    const elementos = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li, a');
+    const elementos = document.querySelectorAll('h1, h2, h3, h4, p, span, li, a, label, tr, td, th, input, select, textarea, button'
+);
     elementos.forEach(el => {
         const actual = parseFloat(window.getComputedStyle(el).fontSize);
         el.style.fontSize = (actual + factor) + 'px';
     });
 }
+
 
 // FUNCIONALIDAD 2: Validación del formulario 
 function validarFormulario() {
@@ -42,7 +44,7 @@ function validarFormulario() {
 }
 
 
-// FUNCIONALIDAD 3: Autocalcular username a partir de nombre y apellidos
+// FUNCIONALIDAD 3:  Username
 function autocalcularUsername() {
     const nombreInput = document.getElementById('id_nombre');
     const apellidosInput = document.getElementById('id_apellidos');
@@ -66,7 +68,35 @@ function autocalcularUsername() {
         apellidosInput.addEventListener('input', actualizarUsername);
     }
 }
+// FUNCIONALIDAD 4: Generar <select> desde array
+function poblarDepartamentos() {
+    const departamentos = ['RRHH', 'Marketing', 'IT', 'Contabilidad', 'Ventas'];
+    const select = document.getElementById('departamento');
+    if (!select) return;
 
+    departamentos.forEach(dep => {
+        const option = document.createElement('option');
+        option.value = dep.toLowerCase();
+        option.textContent = dep;
+        select.appendChild(option);
+    });
+}
+
+// FUNCIONALIDAD 5: Mostrar contenido extra
+function activarToggleInformacion() {
+    const toggleBtn = document.getElementById('toggleInfo');
+    const infoExtra = document.getElementById('infoExtra');
+
+    if (!toggleBtn || !infoExtra) return;
+
+    toggleBtn.addEventListener('click', () => {
+        const visible = infoExtra.style.display === 'block';
+        infoExtra.style.display = visible ? 'none' : 'block';
+        toggleBtn.textContent = visible ? 'Mostrar información adicional' : 'Ocultar información adicional';
+    });
+}
+
+// Lanzar todas las funciones al cargar
 document.addEventListener('DOMContentLoaded', () => {
     // Botones de tamaño
     const btnAumentar = document.getElementById('aumentar');
@@ -75,9 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnAumentar) btnAumentar.addEventListener('click', () => cambiarTamano(2));
     if (btnDisminuir) btnDisminuir.addEventListener('click', () => cambiarTamano(-2));
 
-    // Validar formulario
     validarFormulario();
-
-    // Autocalcular username
     autocalcularUsername();
+    poblarDepartamentos();
+    activarToggleInformacion();
 });

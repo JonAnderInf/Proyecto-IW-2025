@@ -13,6 +13,62 @@ main {
     padding: 0 20px;
 }
 
+#tamano-texto {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #7dbaf7;
+    border: 1px solid #0e0293;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    font-size: 1.2rem;
+}
+
+#tamano-texto button {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    margin: 0 0.3rem;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+#tamano-texto button:hover {
+    transform: scale(1.2);
+}
+
+/* ---------------------------------------------------------------------------------------Crear Empleado--------------------------------------------------------------------------------------------- */
+
+#toggleInfo {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color 0.3s ease;
+  }
+
+  #toggleInfo:hover {
+    background-color: #45a049;
+  }
+
+  #infoExtra {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    border-left: 4px solid #4CAF50;
+    border-radius: 4px;
+    display: none;
+    font-size: 14px;
+    color: #333;
+  }
+
 /* ---------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------- */
 footer {
     background-color: #0a3d62; 
