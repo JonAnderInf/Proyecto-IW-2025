@@ -1,12 +1,3 @@
-// FUNCIONALIDAD 1: Cambiar tamaño del texto
-function cambiarTamano(factor) {
-    const elementos = document.querySelectorAll('h1, h2, h3, h4, p, span, li, a, label, tr, td, th, input, select, textarea, button'
-);
-    elementos.forEach(el => {
-        const actual = parseFloat(window.getComputedStyle(el).fontSize);
-        el.style.fontSize = (actual + factor) + 'px';
-    });
-}
 
 
 // FUNCIONALIDAD 2: Validación del formulario 
@@ -98,12 +89,6 @@ function activarToggleInformacion() {
 
 // Lanzar todas las funciones al cargar
 document.addEventListener('DOMContentLoaded', () => {
-    // Botones de tamaño
-    const btnAumentar = document.getElementById('aumentar');
-    const btnDisminuir = document.getElementById('disminuir');
-
-    if (btnAumentar) btnAumentar.addEventListener('click', () => cambiarTamano(2));
-    if (btnDisminuir) btnDisminuir.addEventListener('click', () => cambiarTamano(-2));
 
     validarFormulario();
     autocalcularUsername();

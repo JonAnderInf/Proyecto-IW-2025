@@ -13,33 +13,6 @@ main {
     padding: 0 20px;
 }
 
-#tamano-texto {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background-color: #7dbaf7;
-    border: 1px solid #0e0293;
-    padding: 0.4rem 0.6rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    font-size: 1.2rem;
-}
-
-#tamano-texto button {
-    background: none;
-    border: none;
-    font-size: 1.3rem;
-    margin: 0 0.3rem;
-    cursor: pointer;
-    color: #333;
-    transition: transform 0.2s ease;
-}
-
-#tamano-texto button:hover {
-    transform: scale(1.2);
-}
-
 /* ---------------------------------------------------------------------------------------Crear Empleado--------------------------------------------------------------------------------------------- */
 
 #toggleInfo {
