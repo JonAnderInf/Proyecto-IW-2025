@@ -24,7 +24,7 @@ main {
     border-radius: 6px;
     cursor: pointer;
     margin-top: 12px;
-    transition: background-color 0.3s ease;
+
   }
 
   #toggleInfo:hover {
@@ -116,3 +116,71 @@ footer {
         tr:hover {
             background-color: #f1f1f1;
         }
+
+ /* --------------------------------------------------------------- PANEL DE MENÚ PRINCIPAL ------------------------------------------------------------------------------- */
+
+.menu-principal {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.menu-principal h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #003366;
+}
+
+/* Contenedor de las 3 categorías */
+.cajas-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Caja individual (Empleados / Equipos / Tickets) */
+.categoria {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 260px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.categoria h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #4CAF50;
+}
+
+.categoria ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.categoria li {
+    margin-bottom: 0.5rem;
+}
+
+.categoria a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.categoria a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------------------------- RESPONSIVE PARA MÓVILES ---------------------------------------------------------- */
+@media (max-width: 768px) {
+    .cajas-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .categoria {
+        width: 90%;
+    }
+}

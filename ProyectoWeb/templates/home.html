@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
-{% block title %} Listado de Empleados {% endblock %}
+{% block title %}Página principal{% endblock %}
+
 {% block content %}
-
-
-<img src="" alt="Logo" class="header-icon">
-<h1>⚙️Gestor - Aerotech S. L.⚙️</h1>
-
-<a href="{% url 'lista-empleados' %}"> Lista de empleados </a><br>
-<a href="{% url 'crear-empleado' %}"> Crear empleado </a><br><br><br>
-<a href="{% url 'lista-equipos' %}"> Lista de equipos </a><br><br><br>
-<a href="{% url 'crear-equipo' %}"> Crear equipo </a><br><br><br>
-<a href="{% url 'crear-ticket' %}"> Crear ticket </a><br><br><br>
-<a href="{% url 'lista-tickets' %}"> Lista de tickets </a><br><br><br>
-
+<section class="menu-principal">
+    <h2>Panel de Gestión</h2>
+    <div class="cajas-menu">
+        <div class="categoria">
+            <h3>👷 Empleados</h3>
+            <ul>
+                <li><a href="{% url 'lista-empleados' %}">Lista de empleados</a></li>
+                <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
+            </ul>
+        </div>
+        <div class="categoria">
+            <h3>🖥️ Equipos</h3>
+            <ul>
+                <li><a href="{% url 'lista-equipos' %}">Lista de equipos</a></li>
+                <li><a href="{% url 'crear-equipo' %}">Crear equipo</a></li>
+            </ul>
+        </div>
+        <div class="categoria">
+            <h3>🧾 Tickets</h3>
+            <ul>
+                <li><a href="{% url 'lista-tickets' %}">Lista de tickets</a></li>
+                <li><a href="{% url 'crear-ticket' %}">Crear ticket</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
 {% endblock %}
