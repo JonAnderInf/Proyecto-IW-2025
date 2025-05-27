@@ -25,4 +25,8 @@ urlpatterns = [
     path('tickets/<int:pk>/', views.DetalleTicket.as_view(), name='detalle-ticket'),
     path('tickets/<int:pk>/modificar/', views.ModificarTicket.as_view(), name='modificar-ticket'),
     path('tickets/<int:pk>/eliminar/', views.EliminarTicket.as_view(), name='eliminar-ticket'),
+    
+    #urls ticket cambio_estado
+  path('tickets/<int:pk>/cambiar_estado/', views.cambiar_estado_ticket, name='cambiar-estado-ticket'),
+
 ]

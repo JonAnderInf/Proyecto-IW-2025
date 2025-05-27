@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Listado de Tickets{% endblock %}
 
 {% block content %}
 
-<!------------------------------------------------------------------ FORMULARIO FILTRO TICKETS---------------------------------------------------------------------------------- -->
 <h1>Listado de Tickets de mantenimiento</h1>
+
 <form method="get" class="mb-3">
   <label>Estado:</label>
   <select name="estado">
@@ -13,11 +15,9 @@
       <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>{{ estado }}</option>
     {% endfor %}
   </select>
-
   <button type="submit">Buscar</button>
   <a href="{% url 'lista-tickets' %}">Limpiar</a>
 </form>
-
 
 <table>
   <thead>
@@ -28,25 +28,38 @@
       <th>Tipo</th>
       <th>Urgencia</th>
       <th>Fecha Apertura</th>
+      <th>Acción</th>
     </tr>
   </thead>
   <tbody>
     {% for ticket in tickets %}
-    <tr>
+    <tr id="ticket-{{ ticket.id }}">
       <td>{{ ticket.referencia }}</td>
       <td>{{ ticket.titulo }}</td>
-      <td>{{ ticket.estado }}</td>
+      <td class="estado">{{ ticket.estado }}</td>
       <td>{{ ticket.tipo }}</td>
       <td>{{ ticket.urgencia }}</td>
       <td>{{ ticket.fecha_apertura }}</td>
+      <td>
+        <button type="button" onclick="cambiarEstado({{ ticket.id }})">
+          {% if ticket.estado == 'abierto' %}
+            Cambiar a cerrado
+          {% else %}
+            Cambiar a abierto
+          {% endif %}
+        </button>
+      </td>
     </tr>
     {% empty %}
     <tr>
-      <td colspan="6">No se encontraron tickets con ese estado.</td>
+      <td colspan="7">No se encontraron tickets con ese estado.</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 
 <a href="{% url 'home' %}">Volver</a>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+
 {% endblock %}

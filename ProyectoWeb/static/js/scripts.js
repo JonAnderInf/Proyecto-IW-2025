@@ -1,6 +1,6 @@
 
 
-// FUNCIONALIDAD 2: Validación del formulario 
+// ----------------------------------------------------------------FUNCIONALIDAD 1: Validación del formulario ----------------------------------------------------------------------------
 function validarFormulario() {
     const form = document.querySelector('form');
     if (!form) return;
@@ -35,7 +35,7 @@ function validarFormulario() {
 }
 
 
-// FUNCIONALIDAD 3:  Username
+// -----------------------------------------------------------------------FUNCIONALIDAD 2:  Username-----------------------------------------------------------------------------------
 function autocalcularUsername() {
     const nombreInput = document.getElementById('id_nombre');
     const apellidosInput = document.getElementById('id_apellidos');
@@ -59,7 +59,7 @@ function autocalcularUsername() {
         apellidosInput.addEventListener('input', actualizarUsername);
     }
 }
-// FUNCIONALIDAD 4: Generar <select> desde array
+// --------------------------------------------------FUNCIONALIDAD 3: Generar <select> desde array--------------------------------------------------------------------------------------
 function poblarDepartamentos() {
     const departamentos = ['RRHH', 'Marketing', 'IT', 'Contabilidad', 'Ventas'];
     const select = document.getElementById('departamento');
@@ -73,7 +73,7 @@ function poblarDepartamentos() {
     });
 }
 
-// FUNCIONALIDAD 5: Mostrar contenido extra
+// ------------------------------------------------------FUNCIONALIDAD 4: Mostrar contenido extra-------------------------------------------------------------------------------------------
 function activarToggleInformacion() {
     const toggleBtn = document.getElementById('toggleInfo');
     const infoExtra = document.getElementById('infoExtra');
@@ -87,7 +87,7 @@ function activarToggleInformacion() {
     });
 }
 
-// Lanzar todas las funciones al cargar
+// ----------------------------------------------------------Lanzar todas las funciones al cargar-----------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
     validarFormulario();
@@ -95,3 +95,44 @@ document.addEventListener('DOMContentLoaded', () => {
     poblarDepartamentos();
     activarToggleInformacion();
 });
+
+// -------------------------------------------------------------AJAX con cambiar estado de ticket ABIERTO/CERRADO--------------------------------------------------------------------
+
+function cambiarEstado(ticketId) {
+  const url = `/Aerotech/tickets/${ticketId}/cambiar_estado/`; 
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCookie('csrftoken') 
+    },
+    body: JSON.stringify({})  
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      const fila = document.getElementById(`ticket-${ticketId}`);
+      fila.querySelector('.estado').textContent = data.nuevo_estado;
+    } else {
+      alert('Error al cambiar estado');
+    }
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+// -------------------------------------------------------Función para obtener el CSRF token de las cookies ----------------------------------------------------------------------------
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      cookie = cookie.trim();
+      if (cookie.startsWith(name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}

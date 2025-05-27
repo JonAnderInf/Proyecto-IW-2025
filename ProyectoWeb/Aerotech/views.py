@@ -4,6 +4,12 @@ from .models import Empleado, Equipo, Ticket
 from .forms import TicketForm, EmpleadoForm, EquipoForm
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 
+# ---------------------------------------------------------------------------------------AYAX CAMBIO DE ESTADO IMPORTS--------------------------------------------------------------------
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+
+
 # ---------------------------------------------------------------------------------------Logger--------------------------------------------------------------------------------------------------
 import logging
 logger = logging.getLogger('proyecto')
@@ -183,4 +189,16 @@ class ModificarEquipo(UpdateView):
 
 
 
+# ---------------------------------------------------------------------------------------AYAX CAMBIO DE ESTADO / PRUEBA DE TOKEN UTILIZAMOS csrf_exempt -----------------------------------------------------------
 
+@csrf_exempt 
+def cambiar_estado_ticket(request, pk):
+    if request.method == 'POST':
+        ticket = get_object_or_404(Ticket, pk=pk)
+        if ticket.estado == 'abierto':
+            ticket.estado = 'cerrado'
+        else:
+            ticket.estado = 'abierto'
+        ticket.save()
+        return JsonResponse({'success': True, 'nuevo_estado': ticket.estado})
+    return JsonResponse({'success': False}, status=400)
