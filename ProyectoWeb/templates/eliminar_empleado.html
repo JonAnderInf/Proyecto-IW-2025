@@ -3,12 +3,12 @@
 
 {% block content %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    <h4>¿Desea dar de baja al empleado seleccionado?</h4>>
-    <button type="submit">Si, quiero</button>
-    <a href="{% url 'lista-empleados'}">No, volver</a>
-
+<form method="post">
+  {% csrf_token %}
+  <p>¿Desea dar de baja al empleado seleccionado?<strong>{{ empleado }}</strong>?</p>
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'lista-empleados' %}">Cancelar</a>
 </form>
+
 
 {% endblock %}

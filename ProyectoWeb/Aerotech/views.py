@@ -4,43 +4,65 @@ from .models import Empleado, Equipo, Ticket
 from .forms import TicketForm, EmpleadoForm, EquipoForm
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 
+# ---------------------------------------------------------------------------------------Logger--------------------------------------------------------------------------------------------------
+import logging
+logger = logging.getLogger('proyecto')
 
-# ----------------------------------------------------------------------------VISTAS DE EMPLEADOS -----------------------------------------------------------------------------------------------------------------
-# vista para listar empleados
+
+# ----------------------------------------------------------------------------------- VISTAS DE EMPLEADOS-----------------------------------------------------------------------------------------                         
+
+
+# Vista para listar empleados
 class ListaEmpleados(ListView):
     model = Empleado
     template_name = 'lista_empleados.html'
     context_object_name = 'empleados' 
 
 
-# vista de detalle de los empleados
+# Vista de detalle de los empleados
 class DetalleEmpleado(DetailView):
     model = Empleado
     template_name = 'detalles_empleado.html'
     context_object_name = 'empleado'
 
 
-# vista de creacion de empleados
+# Vista de creación de empleados
 class CrearEmpleado(CreateView):
     template_name = 'crear_empleado.html'
     form_class = EmpleadoForm
     model = Empleado
     success_url = reverse_lazy('lista-empleados')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        empleado = form.instance
+        logger.info(f" Empleado creado: {empleado.nombre} {empleado.apellidos}")
+        return response
 
-# vista de eliminacion de empleados
 class EliminarEmpleado(DeleteView):
     model = Empleado
     template_name = 'eliminar_empleado.html'
     success_url = reverse_lazy('lista-empleados')
 
+    def delete(self, request, *args, **kwargs):
+        empleado = self.get_object()
+        logger.warning(f" Empleado eliminado: {empleado.nombre} {empleado.apellido}")
+        return super().delete(request, *args, **kwargs)
 
-# vista de modificacion de empleados
+
+# Vista de modificación de empleados
 class ModificarEmpleado(UpdateView):
     model = Empleado
     template_name = 'modificar_empleado.html'
     form_class = EmpleadoForm
     success_url = reverse_lazy('lista-empleados')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        empleado = form.instance
+        logger.info(f" Empleado modificado: {empleado.nombre} {empleado.apellidos}")
+        return response
+
 
 
 
