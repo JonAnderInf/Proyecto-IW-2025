@@ -2,13 +2,17 @@
 {% block title %}Crear equipo{% endblock %}
 
 {% block content %}
-<h2>Crear nuevo equipo</h2>
 
-<form action="{% url 'crear-equipo' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Crear</button>
-</form>
+<div class="crear-equipo">
+    <h2>Crear nuevo equipo</h2>
 
-<a href="{% url 'home' %}">Volver</a>
+    <form action="{% url 'crear-equipo' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear</button>
+    </form>
+
+    <a href="{% url 'home' %}">Volver</a>
+
+</div>
 {% endblock %}

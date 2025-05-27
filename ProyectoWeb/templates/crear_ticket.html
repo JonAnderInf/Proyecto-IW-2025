@@ -1,13 +1,16 @@
-{% extends 'Base.html' %}
+{% extends 'Base.html' %} 
 {% block title %}Crear equipo{% endblock %}
 
 {% block content %}
-<h2>Crear Ticket</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
+<div class="crear-ticket">
+  <h2>Crear Ticket</h2>
 
-<a href="{% url 'home' %}">Volver</a>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Guardar</button>
+  </form>
+
+  <a href="{% url 'home' %}">Volver</a>
+</div>
 {% endblock %}

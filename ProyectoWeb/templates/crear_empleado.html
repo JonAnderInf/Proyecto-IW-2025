@@ -2,24 +2,27 @@
 {% block title %}Crear empleado{% endblock %}
 
 {% block content %}
-<h2>Crear nuevo empleado</h2>
 
-<form id="empleadoForm" action="{% url 'crear-empleado' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+<div class="crear-empleado">
+  <h2>Crear nuevo empleado</h2>
 
-    <label for="departamento">Departamento:</label>
-    <select id="departamento"></select>
+  <form id="empleadoForm" action="{% url 'crear-empleado' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
 
-    <div id="errores"></div>
-    <button type="submit">Crear</button>
-</form>
+      <label for="departamento">Departamento:</label>
+      <select id="departamento"></select>
 
-<button id="toggleInfo">Mostrar información adicional</button>
-<div id="infoExtra">
-    <p>Recuerda que los empleados deben tener un DNI válido y un nombre apropiado.</p>
+      <div id="errores"></div>
+      <button type="submit">Crear</button>
+  </form>
+
+  <button id="toggleInfo">Mostrar información adicional</button>
+  <div id="infoExtra">
+      <p>Recuerda que los empleados deben tener un DNI válido y un nombre apropiado.</p>
+  </div>
+
+  <a href="{% url 'home' %}">Volver</a>
 </div>
 
-
-<a href="{% url 'home' %}">Volver</a>
 {% endblock %}
