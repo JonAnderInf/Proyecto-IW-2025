@@ -2,7 +2,7 @@
 
 {% block title %} Detalles empleado {% endblock %}
 {% block content %}
-
+<div class="card">
 <h2> Detalles del empleado '{{empleado.nombre}} {{empleado.apellidos}}'</h2>
 
 <ul>
@@ -17,7 +17,7 @@
     <li>
     <li><strong>Dni:</strong> {{empleado.dni}}
     <li>
-
 </ul>
-
+  <a class="btn" href="{% url 'home' %}">Volver</a>
+</div>
 {% endblock %}

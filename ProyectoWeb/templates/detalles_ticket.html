@@ -3,6 +3,8 @@
 {% block title %} Detalles ticket {% endblock %}
 
 {% block content %}
+<div class="card">
+
 <h2>Detalles del ticket '{{ ticket.titulo }} - {{ ticket.referencia }}'</h2>
 
 <ul>
@@ -31,4 +33,6 @@
         </ul>
     </li>
 </ul>
+<a class="btn" href="{% url 'home' %}">Volver</a>
+</div>
 {% endblock %}

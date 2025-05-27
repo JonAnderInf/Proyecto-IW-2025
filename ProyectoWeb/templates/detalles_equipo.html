@@ -3,6 +3,8 @@
 {% block title %} Detalles equipo {% endblock %}
 
 {% block content %}
+<div class="card">
+
 <h2>Detalles del equipo '{{ equipo.modelo }} - {{ equipo.numero_serie }}'</h2>
 
 <ul>
@@ -25,4 +27,6 @@
         </ul>
     </li>
 </ul>
+<a class="btn" href="{% url 'home' %}">Volver</a>
+</div>
 {% endblock %}

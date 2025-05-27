@@ -172,6 +172,53 @@ tr:hover {
 .categoria a:hover {
   text-decoration: underline;
 }
+/*-------------------------------------------------------------------Detalles Views-----------------------------------------------------------------------------------------------------------------------------*/
+.card {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 24px;
+    color: #050505;
+    margin-bottom: 20px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.card li strong {
+    width: 100px;
+    display: inline-block;
+    color: #34495e;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
 
 /* --------------------------------------------------------------- CREAR/MODIFICAR_EMPLEADO/EQUIPO/TICKET ----------------------------------------------------------------------------------------------------- */
 
