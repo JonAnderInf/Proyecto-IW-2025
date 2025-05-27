@@ -1,10 +1,4 @@
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9fafb;
-    color: #333;
-    line-height: 1.5;
-}
 
 /*--------------------------------------------------------------------------- Contenido principal del BASE.html------------------------------------------------------------------------------- */
 main {
@@ -43,47 +37,57 @@ main {
   }
 
 /* ---------------------------------------------------------------------------------------Footer--------------------------------------------------------------------------------------------- */
-footer {
-    background-color: #0a3d62; 
-    color: #fff;
-    padding: 20px 0;
-    font-size: 14px;
-    font-weight: 400;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
+
+footer {
+  background-color: #0a3d62;
+  color: white;
+  padding: 20px 0;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+
 .contenedor-footer {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .contacto h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .contacto p {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 .derechos {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 13px;
-    opacity: 0.75;
-    font-style: italic;
+  max-width: 960px;
+  margin: 12px auto 0 auto;
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
 }
 
-    .contacto {
-        margin-bottom: 15px;
-    }
 
-
-/*  -------------------------------------------------------------------------------------------------------LISTADO DE EMPLEADOS---------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------LISTADO DE EMPLEADOS---------------------------------------------------------- */
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
@@ -130,7 +134,7 @@ footer {
     color: #003366;
 }
 
-/* Contenedor de las 3 categorías */
+
 .cajas-menu {
     display: flex;
     flex-wrap: wrap;
@@ -138,7 +142,7 @@ footer {
     gap: 1.5rem;
 }
 
-/* Caja individual (Empleados / Equipos / Tickets) */
+
 .categoria {
     background-color: #fff;
     border: 1px solid #ddd;
