@@ -3,14 +3,18 @@
 
 {% block content %}
 
-<h2> Modificar un Ticket </h2>
-<form action="" method="post">
+<div class="modificar-ticket">
+    <h2> Modificar un Ticket </h2>
+    <form action="" method="post">
 
-    {{form.as_p}}
-    {% csrf_token %}
-    <button type="submit">Guardar</button>
-    <a href="{% url 'listar-empleados'}">Volver</a>
+        {{form.as_p}}
+        {% csrf_token %}
+        <button type="submit">Guardar</button>
+        <a href="{% url 'lista-tickets' %}">Volver</a>
 
-</form>
+
+    </form>
+
+</div>
 
 {% endblock %}

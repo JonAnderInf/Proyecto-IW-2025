@@ -3,14 +3,18 @@
 
 {% block content %}
 
-<h2> Modificar un equipo </h2>
-<form action="" method="post">
+<div class="modificar-equipo">
+    <h2> Modificar un equipo </h2>
+    <form action="" method="post">
 
-    {{form.as_p}}
-    {% csrf_token %}
-    <button type="submit">Guardar</button>
-    <a href="{% url 'lista-equipos'}">Volver</a>
+        {{form.as_p}}
+        {% csrf_token %}
+        <button type="submit">Guardar</button>
+       <a href="{% url 'lista-equipos' %}">Volver</a>
 
-</form>
+
+    </form>
+
+</div>
 
 {% endblock %}

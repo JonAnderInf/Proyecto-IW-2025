@@ -173,7 +173,11 @@ tr:hover {
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------- CREAR_EMPLEADO/EQUIPO/TICKET ----------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------- CREAR/MODIFICAR_EMPLEADO/EQUIPO/TICKET ----------------------------------------------------------------------------------------------------- */
+
+.modificar-equipo,
+.modificar-empleado,
+.modificar-ticket,
 .crear-equipo,
 .crear-ticket,
 .crear-empleado {
@@ -186,6 +190,9 @@ tr:hover {
   border-radius: 8px;
 }
 
+.modificar-equipo h2,
+.modificar-empleado h2,
+.modificar-ticket h2,
 .crear-equipo h2,
 .crear-ticket h2,
 .crear-empleado h2 {
@@ -194,6 +201,9 @@ tr:hover {
   color: #0a3d62;
 }
 
+.modificar-equipo form label,
+.modificar-empleado form label,
+.modificar-ticket form label,
 .crear-equipo form label,
 .crear-ticket form label,
 .crear-empleado form label {
@@ -203,6 +213,16 @@ tr:hover {
 }
 
 
+
+.modificar-equipo form input,
+.modificar-equipo form select,
+.modificar-equipo form button,
+.modificar-empleado form input,
+.modificar-empleado form select,
+.modificar-empleado form button,
+.modificar-ticket form input,
+.modificar-ticket form select,
+.modificar-ticket form button,
 .crear-equipo form input,
 .crear-equipo form select,
 .crear-equipo form button,
@@ -221,6 +241,11 @@ tr:hover {
   border-radius: 4px;
 }
 
+
+
+.modificar-equipo form button,
+.modificar-empleado form button,
+.modificar-ticket form button,
 .crear-equipo form button,
 .crear-ticket form button,
 .crear-empleado form button {
@@ -230,12 +255,19 @@ tr:hover {
   margin-top: 20px;
 }
 
+.modificar-equipo form button:hover,
+.modificar-empleado form button:hover,
+.modificar-ticket form button:hover,
 .crear-equipo form button:hover,
 .crear-ticket form button:hover,
 .crear-empleado form button:hover {
   background-color: #064173;
 }
 
+
+.modificar-equipo a,
+.modificar-empleado a,
+.modificar-ticket a,
 .crear-equipo a,
 .crear-ticket a,
 .crear-empleado a {
