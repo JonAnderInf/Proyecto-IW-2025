@@ -31,7 +31,19 @@
         {% endfor %}
       </ul>
     </li>
-    <li>
+    <li><strong>Equipos:</strong>
+      <ul>
+        {% for equipo in empleado.equipos_asignados.all %}
+        <li>
+          <a href="{% url 'detalles-equipo' equipo.id %}">
+            {{ equipo.modelo }} - {{ equipo.numero_serie }}
+          </a>
+        </li>
+        {% empty %}
+        <li>No tiene equipos asignados.</li>
+        {% endfor %}
+      </ul>
+    </li>
   </ul>
   <a class="btn" href="{% url 'lista-empleados' %}">Volver</a>
 </div>

@@ -332,7 +332,7 @@ tr:hover {
 .crear-equipo form button,
 .crear-ticket form button,
 .crear-empleado form button {
-  background-color: #0a3d62;
+  background-color: #2d84a7;
   color: white;
   border: none;
   margin-top: 20px;
@@ -344,7 +344,7 @@ tr:hover {
 .crear-equipo form button:hover,
 .crear-ticket form button:hover,
 .crear-empleado form button:hover {
-  background-color: #064173;
+  background-color: #254450;
 }
 
 
@@ -356,6 +356,6 @@ tr:hover {
 .crear-empleado a {
   display: inline-block;
   margin-top: 20px;
-  color: #0a3d62;
+  color: #ffffff;
   text-decoration: none;
 }
