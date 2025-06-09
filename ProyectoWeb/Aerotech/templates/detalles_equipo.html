@@ -5,28 +5,45 @@
 {% block content %}
 <div class="card">
 
-<h2>Detalles del equipo '{{ equipo.modelo }} - {{ equipo.numero_serie }}'</h2>
+    <h2>Detalles del equipo '{{ equipo.modelo }} - {{ equipo.numero_serie }}'</h2>
 
-<ul>
-    <li><strong>Número de serie:</strong> {{ equipo.numero_serie }}</li>
-    <li><strong>Modelo:</strong> {{ equipo.modelo }}</li>
-    <li><strong>Marca:</strong> {{ equipo.marca }}</li>
-    <li><strong>Tipo:</strong> {{ equipo.tipo }}</li>
-    <li><strong>Fecha de adquisición:</strong> {{ equipo.fecha_adquisicion }}</li>
-    <li><strong>Fecha de puesta en marcha:</strong> {{ equipo.fecha_puesta_marcha }}</li>
-    <li><strong>Proveedor (nombre):</strong> {{ equipo.proveedor_nombre }}</li>
-    <li><strong>Proveedor (teléfono):</strong> {{ equipo.proveedor_telefono }}</li>
-    <li><strong>Planta:</strong> {{ equipo.planta }}</li>
-    <li><strong>Empleados asignados:</strong>
-        <ul>
-            {% for empleado in equipo.empleados.all %}
-                <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
-            {% empty %}
+    <ul>
+        <li><strong>Número de serie:</strong> {{ equipo.numero_serie }}</li>
+        <li><strong>Modelo:</strong> {{ equipo.modelo }}</li>
+        <li><strong>Marca:</strong> {{ equipo.marca }}</li>
+        <li><strong>Tipo:</strong> {{ equipo.tipo }}</li>
+        <li><strong>Fecha de adquisición:</strong> {{ equipo.fecha_adquisicion }}</li>
+        <li><strong>Fecha de puesta en marcha:</strong> {{ equipo.fecha_puesta_marcha }}</li>
+        <li><strong>Proveedor (nombre):</strong> {{ equipo.proveedor_nombre }}</li>
+        <li><strong>Proveedor (teléfono):</strong> {{ equipo.proveedor_telefono }}</li>
+        <li><strong>Planta:</strong> {{ equipo.planta }}</li>
+        <li><strong>Empleados asignados:</strong>
+            <ul>
+                {% for empleado in equipo.empleados.all %}
+                <li>
+                    <a href="{% url 'detalles-empleado' empleado.id %}">
+                        {{ empleado.nombre }} {{ empleado.apellidos }}
+                    </a>
+                </li>
+                {% empty %}
                 <li>No hay empleados asignados</li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
-<a class="btn" href="{% url 'home' %}">Volver</a>
+                {% endfor %}
+            </ul>
+        </li>
+        <li><strong>Tickets relacionados:</strong>
+            <ul>
+                {% for ticket in equipo.ticket_set.all %}
+                <li>
+                    <a href="{% url 'detalle-ticket' ticket.id %}">
+                        {{ ticket.titulo }} ({{ ticket.referencia }})
+                    </a>
+                </li>
+                {% empty %}
+                <li>No hay tickets asignados</li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+    <a class="btn" href="{% url 'lista-equipos' %}">Volver</a>
 </div>
 {% endblock %}

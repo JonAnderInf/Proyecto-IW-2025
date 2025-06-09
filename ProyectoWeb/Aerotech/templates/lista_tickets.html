@@ -28,7 +28,8 @@
       <th>Tipo</th>
       <th>Urgencia</th>
       <th>Fecha Apertura</th>
-      <th>Acción</th>
+      <th>Acciones</th>
+      <th>Cambio de Estado</th>
     </tr>
   </thead>
   <tbody>
@@ -40,6 +41,9 @@
       <td>{{ ticket.tipo }}</td>
       <td>{{ ticket.urgencia }}</td>
       <td>{{ ticket.fecha_apertura }}</td>
+      <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
+        <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
+        <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a></td>
       <td>
         <button type="button" onclick="cambiarEstado({{ ticket.id }})">
           {% if ticket.estado == 'abierto' %}
