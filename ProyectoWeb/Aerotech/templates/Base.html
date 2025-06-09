@@ -11,6 +11,17 @@
 </head>
 
 <body>
+    <header>
+        <h1>Aerotech Gestiones</h1>
+    </header>
+    <nav>
+      <ul>
+    <li><a href="{% url 'home' %}">Inicio</a></li>
+    <li><a href="{% url 'lista-empleados' %}">Empleados</a></li>
+    <li><a href="{% url 'lista-equipos' %}">Equipos</a></li>
+    <li><a href="{% url 'lista-tickets' %}">Tickets</a></li>  
+      </ul>
+    </nav>
     <main>
         {% block content %}
         {% endblock %}

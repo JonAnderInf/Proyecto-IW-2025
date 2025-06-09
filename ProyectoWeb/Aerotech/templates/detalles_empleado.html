@@ -3,9 +3,9 @@
 {% block title %} Detalles empleado {% endblock %}
 {% block content %}
 <div class="card">
-<h2> Detalles del empleado '{{empleado.nombre}} {{empleado.apellidos}}'</h2>
+  <h2> Detalles del empleado '{{empleado.nombre}} {{empleado.apellidos}}'</h2>
 
-<ul>
+  <ul>
 
     <li><strong>Nombre:</strong> {{empleado.nombre}}
     <li>
@@ -17,7 +17,22 @@
     <li>
     <li><strong>Dni:</strong> {{empleado.dni}}
     <li>
-</ul>
-  <a class="btn" href="{% url 'home' %}">Volver</a>
+    <li><strong>Tickets:</strong>
+      <ul>
+        {% for ticket in empleado.ticket_set.all %}
+        <li>
+          <a href="{% url 'detalle-ticket' ticket.id %}">{{ ticket.titulo }}</a>
+          ({{ ticket.estado }})
+        </li>
+        {% empty %}
+        <li>
+          No tiene tickets asignados.
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+  </ul>
+  <a class="btn" href="{% url 'lista-empleados' %}">Volver</a>
 </div>
 {% endblock %}
