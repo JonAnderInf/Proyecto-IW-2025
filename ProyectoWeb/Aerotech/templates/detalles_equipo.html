@@ -14,8 +14,15 @@
         <li><strong>Tipo:</strong> {{ equipo.tipo }}</li>
         <li><strong>Fecha de adquisición:</strong> {{ equipo.fecha_adquisicion }}</li>
         <li><strong>Fecha de puesta en marcha:</strong> {{ equipo.fecha_puesta_marcha }}</li>
-        <li><strong>Proveedor (nombre):</strong> {{ equipo.proveedor_nombre }}</li>
-        <li><strong>Proveedor (teléfono):</strong> {{ equipo.proveedor_telefono }}</li>
+        <li><strong>Proveedores:</strong>
+            <ul>
+                {% for proveedor in equipo.proveedores.all %}
+                <li>{{ proveedor.nombre }}</li>
+                {% empty %}
+                <li>No tiene proveedores asignados.</li>
+                {% endfor %}
+            </ul>
+        </li>
         <li><strong>Planta:</strong> {{ equipo.planta }}</li>
         <li><strong>Empleados asignados:</strong>
             <ul>

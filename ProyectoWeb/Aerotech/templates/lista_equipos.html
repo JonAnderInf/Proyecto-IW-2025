@@ -38,8 +38,6 @@
             <th>Tipo</th>
             <th>Fecha de Adquisición</th>
             <th>Fecha de Puesta en Marcha</th>
-            <th>Proveedor</th>
-            <th>Teléfono</th>
             <th>Planta</th>
             <th>Acciones</th>
         </tr>
@@ -53,8 +51,6 @@
             <td>{{ equipo.tipo }}</td>
             <td>{{ equipo.fecha_adquisicion }}</td>
             <td>{{ equipo.fecha_puesta_marcha }}</td>
-            <td>{{ equipo.proveedor_nombre }}</td>
-            <td>{{ equipo.proveedor_telefono }}</td>
             <td>{{ equipo.planta }}</td>
             <td>
                 <a href="{% url 'detalles-equipo' equipo.id %}">Detalles</a> |

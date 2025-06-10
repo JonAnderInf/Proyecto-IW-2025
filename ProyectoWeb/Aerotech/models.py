@@ -1,12 +1,18 @@
 from django.db import models
 
 class Empleado(models.Model):
+    DEPARTAMENTOS = [
+        ('Dirección', 'Dirección'),
+        ('Mantenimiento', 'Mantenimiento'),
+        ('Logística', 'Logística'),
+    ]
     dni = models.CharField(max_length=9, unique=True)
     nombre = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=150)
     email = models.EmailField()
     telefono = models.CharField(max_length=15)
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
+    departamento = models.CharField(max_length=50, choices=DEPARTAMENTOS)
 
 
 
@@ -22,21 +28,21 @@ class Proveedor(models.Model):
     
 class Equipo(models.Model):
     MODELOS = [
-        ('1', 'aaaaaa000'),
-        ('2', 'aaaaaaa111'),
-        ('3', 'aaaaaaa999'),
-        ('4', 'aaaaaaa888'),
+        ('aaaaaa000', 'aaaaaa000'),
+        ('aaaaaaa111', 'aaaaaaa111'),
+        ('aaaaaaa999', 'aaaaaaa999'),
+        ('aaaaaaa888', 'aaaaaaa888'),
     ]
 
     MARCAS = [
-        ('1', 'Ikertronic'),
-        ('2', 'JonAndertech'),
+        ('Ikertronic', 'Ikertronic'),
+        ('JonAndertech', 'JonAndertech'),
     ]
 
     TIPOS = [
-        ('1', 'Deshumidificador de Aire'),
-        ('2', 'Depuradora'),
-        ('3', 'Aire Acondicionado'),
+        ('Deshumidificador de Aire', 'Deshumidificador de Aire'),
+        ('Depuradora', 'Depuradora'),
+        ('Aire Acondicionado', 'Aire Acondicionado'),
     ]
         
     numero_serie = models.CharField(max_length=100, unique=True)
@@ -45,8 +51,8 @@ class Equipo(models.Model):
     tipo = models.CharField(max_length=50, choices=TIPOS)
     fecha_adquisicion = models.DateField()
     fecha_puesta_marcha = models.DateField()
-    proveedores = models.ManyToManyField(Proveedor, related_name='equipos')
     planta = models.CharField(max_length=100)
+    proveedores = models.ManyToManyField(Proveedor, related_name='proveedores')
     empleados = models.ManyToManyField(Empleado, related_name="equipos_asignados")
 
 

@@ -28,6 +28,7 @@
       <th>Tipo</th>
       <th>Urgencia</th>
       <th>Fecha Apertura</th>
+      <th>Fecha Resolución</th>
       <th>Acciones</th>
       <th>Cambio de Estado</th>
     </tr>
@@ -41,6 +42,7 @@
       <td>{{ ticket.tipo }}</td>
       <td>{{ ticket.urgencia }}</td>
       <td>{{ ticket.fecha_apertura }}</td>
+      <td>{{ ticket.fecha_resolucion }}</td>
       <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
         <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
         <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a></td>
