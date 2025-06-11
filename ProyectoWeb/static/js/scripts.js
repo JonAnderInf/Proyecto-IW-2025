@@ -60,7 +60,7 @@ function autocalcularUsername() {
     }
 }
 // --------------------------------------------------FUNCIONALIDAD 3: Generar <select> desde array--------------------------------------------------------------------------------------
-function poblarDepartamentos() {
+function TipoDepartamentos() {
     const departamentos = ['RRHH', 'Marketing', 'IT', 'Contabilidad', 'Ventas'];
     const select = document.getElementById('departamento');
     if (!select) return;
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activarToggleInformacion();
 });
 
-// -------------------------------------------------------------AJAX con cambiar estado de ticket ABIERTO/CERRADO--------------------------------------------------------------------
+// -------------------------------------------------------------NO VISTO EN LA TEORIA / USO DE FETCH/POST PARA EL ESTADO--------------------------------------------------------------------
 
 function cambiarEstado(ticketId) {
   const url = `/Aerotech/tickets/${ticketId}/cambiar_estado/`; 
