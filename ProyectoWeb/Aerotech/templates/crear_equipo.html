@@ -6,7 +6,7 @@
 <div class="crear-equipo">
     <h2>Crear nuevo equipo</h2>
 
-    <form action="{% url 'crear-equipo' %}" method="post">
+    <form class="Form" action="{% url 'crear-equipo' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Crear</button>

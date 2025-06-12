@@ -12,7 +12,7 @@
   <select name="estado">
     <option value="">Todos</option>
     {% for estado in estados %}
-      <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>{{ estado }}</option>
+    <option value="{{ estado }}" {% if request.GET.estado==estado %}selected{% endif %}>{{ estado }}</option>
     {% endfor %}
   </select>
   <button type="submit">Buscar</button>
@@ -45,13 +45,14 @@
       <td>{{ ticket.fecha_resolucion }}</td>
       <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
         <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
-        <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a></td>
+        <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a>
+      </td>
       <td>
         <button type="button" onclick="cambiarEstado({{ ticket.id }})">
           {% if ticket.estado == 'abierto' %}
-            Cambiar a cerrado
+          Cambiar a cerrado
           {% else %}
-            Cambiar a abierto
+          Cambiar a abierto
           {% endif %}
         </button>
       </td>

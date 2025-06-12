@@ -60,14 +60,31 @@ class Equipo(models.Model):
         return f"{self.modelo} - {self.numero_serie}"
 
 class Ticket(models.Model):
+    URGENCIA = [
+        ('alta', 'Alta'),
+        ('media', 'Media'),
+        ('baja', 'Baja')
+        ]
+    
+    TIPO = [
+        ('averia', 'Avería'),
+        ('mejora', 'Mejora'),
+        ('mantenimiento', 'Mantenimiento')
+    ]
+
+    ESTADO = [
+        ('abierto', 'Abierto'), 
+        ('cerrado', 'Cerrado')
+    ]
+
     referencia = models.CharField(max_length=100, unique=True)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     fecha_apertura = models.DateField(auto_now_add=True)
     fecha_resolucion = models.DateField(null=True, blank=True)
-    urgencia = models.CharField(max_length=10, choices=[('alta', 'Alta'), ('media', 'Media'), ('baja', 'Baja')])
-    tipo = models.CharField(max_length=15, choices=[('averia', 'Avería'), ('mejora', 'Mejora'), ('mantenimiento', 'Mantenimiento')])
-    estado = models.CharField(max_length=10, choices=[('abierto', 'Abierto'), ('cerrado', 'Cerrado')])
+    urgencia = models.CharField(max_length=10, choices=URGENCIA)
+    tipo = models.CharField(max_length=15, choices=TIPO)
+    estado = models.CharField(max_length=10, choices=ESTADO)
     empleado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, null=True) 
     equipos = models.ManyToManyField(Equipo) 
 
