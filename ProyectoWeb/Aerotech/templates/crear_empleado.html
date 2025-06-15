@@ -11,7 +11,7 @@
     {{ form.as_p }}
 
     <div id="errores"></div>
-    <button type="submit">Crear</button>
+    <button  type="submit">Crear</button>
   </form>
 
   <button id="toggleInfo">Mostrar información adicional</button>
@@ -22,4 +22,12 @@
   <a class="btn" href="{% url 'home' %}">Volver</a>
 </div>
 
+
+{% if messages %}
+  <div class="mensajes">
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
 {% endblock %}

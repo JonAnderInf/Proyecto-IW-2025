@@ -87,14 +87,17 @@ function activarToggleInformacion() {
     });
 }
 
+// ------------------------------------------------------FUNCIONALIDAD 5: Mostrar mensaje emergente enviar formulario-------------------------------------------------------------------------------------------
+
 // ----------------------------------------------------------Lanzar todas las funciones al cargar-----------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-
     validarFormulario();
     autocalcularUsername();
-    poblarDepartamentos();
+    TipoDepartamentos();
     activarToggleInformacion();
 });
+
+
 
 // -------------------------------------------------------------NO VISTO EN LA TEORIA / USO DE FETCH/POST PARA EL ESTADO--------------------------------------------------------------------
 

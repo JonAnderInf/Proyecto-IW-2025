@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import Empleado, Equipo, Ticket
 from .forms import TicketForm, EmpleadoForm, EquipoForm
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
+from django.contrib import messages
 
 # ---------------------------------------------------------------------------------------AYAX CAMBIO DE ESTADO IMPORTS--------------------------------------------------------------------
 from django.views.decorators.csrf import csrf_exempt
@@ -43,6 +44,8 @@ class CrearEmpleado(CreateView):
         response = super().form_valid(form)
         empleado = form.instance
         logger.info(f" Empleado creado: {empleado.nombre} {empleado.apellidos}")
+        messages.success(self.request, "Creado")
+
         return response
 
 class EliminarEmpleado(DeleteView):
