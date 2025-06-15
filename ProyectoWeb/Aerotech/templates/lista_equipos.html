@@ -12,7 +12,7 @@
   <select name="marca">
     <option value="">Todas las marcas</option>
     {% for marca in marcas %}
-    <option value="{{ marca }}" {% if request.GET.marca==marca %}selected{% endif %}>{{ marca }}</option>
+    <option value="{{ marca }}" {% if request.GET.marca == marca %}selected{% endif %}>{{ marca }}</option>
     {% endfor %}
   </select>
 
@@ -20,7 +20,7 @@
   <select name="tipo">
     <option value="">Todos los tipos</option>
     {% for tipo in tipos %}
-    <option value="{{ tipo }}" {% if request.GET.tipo==tipo %}selected{% endif %}>{{ tipo }}</option>
+    <option value="{{ tipo }}" {% if request.GET.tipo == tipo %}selected{% endif %}>{{ tipo }}</option>
     {% endfor %}
   </select>
 

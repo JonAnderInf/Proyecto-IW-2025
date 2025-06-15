@@ -5,6 +5,8 @@
 
 {% block content %}
 
+
+
 <h1>Listado de Tickets de mantenimiento</h1>
 
 <form method="get" class="mb-3">
@@ -12,13 +14,14 @@
   <select name="estado">
     <option value="">Todos</option>
     {% for estado in estados %}
-    <option value="{{ estado }}" {% if request.GET.estado==estado %}selected{% endif %}>{{ estado }}</option>
+    <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>{{ estado }}</option>
     {% endfor %}
   </select>
   <button type="submit">Buscar</button>
   <a href="{% url 'lista-tickets' %}">Limpiar</a>
 </form>
 
+<div class="lista_informacion">
 <table>
   <thead>
     <tr>
@@ -65,7 +68,11 @@
   </tbody>
 </table>
 
+</div>
+
 <a class="btn" href="{% url 'home' %}">Volver</a>
+
+
 
 <script src="{% static 'js/scripts.js' %}"></script>
 
