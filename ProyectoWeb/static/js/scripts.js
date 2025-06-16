@@ -99,16 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// -------------------------------------------------------------NO VISTO EN LA TEORIA / USO DE FETCH/POST PARA EL ESTADO--------------------------------------------------------------------
-
+// -------------------------------------------------------------/ USO DE FETCH/POST PARA EL ESTADO  /---------------------------------------------------------------------
 function cambiarEstado(ticketId) {
-  const url = `/Aerotech/tickets/${ticketId}/cambiar_estado/`; 
-
-  fetch(url, {
+  fetch(`/Aerotech/tickets/${ticketId}/cambiar_estado/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRFToken': getCookie('csrftoken') 
+      'X-CSRFToken': getCookie('csrftoken')
     },
     body: JSON.stringify({})  
   })
@@ -117,12 +114,17 @@ function cambiarEstado(ticketId) {
     if (data.success) {
       const fila = document.getElementById(`ticket-${ticketId}`);
       fila.querySelector('.estado').textContent = data.nuevo_estado;
+
+      const boton = fila.querySelector('button');
+      boton.textContent = data.nuevo_estado === 'abierto' ? 'Cambiar a cerrado' : 'Cambiar a abierto';
     } else {
       alert('Error al cambiar estado');
     }
   })
   .catch(error => console.error('Error:', error));
 }
+
+
 
 // -------------------------------------------------------Función para obtener el CSRF token de las cookies ----------------------------------------------------------------------------
 function getCookie(name) {
