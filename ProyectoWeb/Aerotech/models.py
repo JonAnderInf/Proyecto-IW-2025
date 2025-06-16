@@ -13,6 +13,8 @@ class Empleado(models.Model):
     telefono = models.CharField(max_length=15)
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
     departamento = models.CharField(max_length=50, choices=DEPARTAMENTOS)
+    password = models.CharField(max_length=100, default="")   # PRUEBA PARA VER SI FUNCIONA EL LOGGER y pss VACIA
+
 
 
 

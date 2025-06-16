@@ -11,6 +11,10 @@ urlpatterns = [
     path('empleado/<int:pk>/eliminar/', views.EliminarEmpleado.as_view(), name='eliminar-empleado'),
     path('empleado/<int:pk>/modificar/', views.ModificarEmpleado.as_view(), name='modificar-empleado'),
 
+    # Ticket loggin empleado
+    path('login/', views.login_empleado, name='login-empleado'), 
+    path('logout/', views.logout_empleado, name='logout-empleado'),
+
     # Equipos 
     path('equipos/', views.ListaEquipos.as_view(), name='lista-equipos'),
     path('crear_equipo/', views.CrearEquipo.as_view(), name='crear-equipo'),
@@ -28,5 +32,7 @@ urlpatterns = [
     
     #urls ticket cambio_estado
   path('tickets/<int:pk>/cambiar_estado/', views.cambiar_estado_ticket, name='cambiar-estado-ticket'),
+
+
 
 ]

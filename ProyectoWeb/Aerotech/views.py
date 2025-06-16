@@ -5,6 +5,7 @@ from .forms import TicketForm, EmpleadoForm, EquipoForm
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 from django.contrib import messages
 
+
 # --------------------------------------------------------------------------------------- CAMBIO DE ESTADO FETCH/POST--------------------------------------------------------------------
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -40,6 +41,14 @@ class CrearEmpleado(CreateView):
     model = Empleado
     success_url = reverse_lazy('lista-empleados')
 
+
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
+
     def form_valid(self, form):
         response = super().form_valid(form)
         empleado = form.instance
@@ -53,6 +62,14 @@ class EliminarEmpleado(DeleteView):
     template_name = 'eliminar_empleado.html'
     success_url = reverse_lazy('lista-empleados')
 
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
+
     def delete(self, request, *args, **kwargs):
         empleado = self.get_object()
         logger.warning(f" Empleado eliminado: {empleado.nombre} {empleado.apellido}")
@@ -65,6 +82,14 @@ class ModificarEmpleado(UpdateView):
     template_name = 'modificar_empleado.html'
     form_class = EmpleadoForm
     success_url = reverse_lazy('lista-empleados')
+
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -96,6 +121,16 @@ class ListaTickets(ListView):
 
         return queryset
 
+
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['estados'] = Ticket.objects.values_list('estado', flat=True).distinct()
@@ -107,6 +142,14 @@ class CrearTicket(CreateView):
     form_class = TicketForm
     template_name = 'crear_ticket.html'
     success_url = reverse_lazy('lista-tickets') 
+
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
 
 # vista de detalles  de tickets
 class DetalleTicket(DetailView):
@@ -152,6 +195,15 @@ class ListaEquipos(ListView):
 
         return queryset
 
+
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['marcas'] = Equipo.objects.values_list('marca', flat=True).distinct()
@@ -172,6 +224,17 @@ class CrearEquipo(CreateView):
     template_name = 'crear_equipo.html'
     form_class = EquipoForm
     success_url = reverse_lazy('lista-equipos')
+
+
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+
+    
+
+    
 
 
 # Eliminar equipos
@@ -204,4 +267,33 @@ def cambiar_estado_ticket(request, pk):
         return JsonResponse({'success': False, 'error': 'Método no permitido'}, status=405)
 
 
+# --------------------------------------------------------------------------------------- CREAR LOGGIN EMPLEADOS------------------------------------------------------------------
+
+
+def login_empleado(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        try:
+            empleado = Empleado.objects.get(username=username, password=password)
+            request.session["empleado_id"] = empleado.id
+            request.session["departamento"] = empleado.departamento
+            return redirect("home")  # La vista del home en nuestro caso o sino la lista de empleados
+        except Empleado.DoesNotExist:
+            return render(request, "login-empleado.html", {"error": "Credenciales incorrectas"})
     
+    return render(request, "login-empleado.html")
+
+def logout_empleado(request):
+    request.session.flush()
+    return redirect("login-empleado")
+
+
+
+
+
+
+def logout_empleado(request):
+    request.session.flush()  # Borra los datos del empleado creado en este caso
+    return redirect('login-empleado') 
+

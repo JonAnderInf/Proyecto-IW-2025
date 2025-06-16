@@ -368,3 +368,55 @@ tr:hover {
   color: #ffffff;
   text-decoration: none;
 }
+
+
+
+/* --------------------------------------------------------------- LOGGIN EMPLEADO ----------------------------------------------------------------------------------------------------- */
+
+
+
+.contenedor-login {
+    max-width: 350px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.contenedor-login h2 {
+    text-align: center;
+}
+
+.contenedor-login label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.contenedor-login input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.contenedor-login button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.contenedor-login button:hover {
+    background-color: #135ba1;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
