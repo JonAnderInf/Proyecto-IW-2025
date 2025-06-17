@@ -32,6 +32,14 @@ class DetalleEmpleado(DetailView):
     model = Empleado
     template_name = 'detalles_empleado.html'
     context_object_name = 'empleado'
+    
+    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+        if "empleado_id" not in request.session:
+            return redirect("login-empleado")
+        return super().dispatch(request, *args, **kwargs)
+        
+
+    
 
 
 # Vista de creación de empleados
