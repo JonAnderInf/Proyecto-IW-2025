@@ -5,6 +5,7 @@ header h1 {
   font-size: 24px;
   color: black;
   margin: 10px;
+  
 }
 
 /* ------------------------------------------------------------------------------------Navegador------------------------- */
@@ -40,6 +41,7 @@ main {
   max-width: 960px;
   margin: 30px auto;
   padding: 0 10px;
+  flex: 1;
 }
 
 /* ---------------------------------------------------------------------------------------Botón toggleInfo y InfoExtra--------------------------------------------------------------------------------------------- */
@@ -81,9 +83,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0px;
   background-color: #f7f7f7;
+
 }
-
-
 footer {
   background-color: #0a3d62;
   color: white;
@@ -91,10 +92,9 @@ footer {
   font-size: 14px;
   font-weight: 400;
   width: 100%;
-  margin-top: auto;
   box-sizing: border-box;
+  text-align: center;
 }
-
 
 .contenedor-footer {
   max-width: 960px;
@@ -103,24 +103,58 @@ footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  text-align: left;
 }
 
-.contacto h2 {
+.contacto,
+.enlaces,
+.legal {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+}
+
+footer h2 {
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: 600;
+  color: white;
+  line-height: 1.2;
 }
 
 .contacto p {
   margin-bottom: 6px;
 }
 
+.enlaces ul,
+.legal ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.enlaces li,
+.legal li {
+  margin-bottom: 4px;
+}
+
+.enlaces a,
+.legal a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.enlaces a:hover,
+.legal a:hover {
+  text-decoration: underline;
+}
+
 .derechos {
-  max-width: 960px;
-  margin: 12px auto 0 auto;
+  margin-top: 20px;
+  text-align: center;
   font-size: 13px;
   font-style: italic;
-  text-align: center;
 }
 
 
@@ -130,15 +164,17 @@ h1 {
   color: #333;
   text-align: center;
 }
+
 /*---- Clase para desplazar la lista de tickets -----*/
 .lista_informacion {
-  overflow-x: auto; /*---- Barra para desplazar a la derecha la lista de tickets -----*/
+  overflow-x: auto;
+  /*---- Barra para desplazar a la derecha la lista de tickets -----*/
   margin: 0 auto;
   max-width: 100%;
 }
 
 table {
-  min-width: 800px; 
+  min-width: 800px;
   margin: 20px auto;
   border-collapse: collapse;
   background-color: white;
@@ -266,7 +302,7 @@ tr:hover {
 
 
 /* --------------------------------------------------------------- CREAR/MODIFICAR_EMPLEADO/EQUIPO/TICKET ----------------------------------------------------------------------------------------------------- */
-
+.formulario-login,
 .modificar-equipo,
 .modificar-empleado,
 .modificar-ticket,
@@ -282,6 +318,7 @@ tr:hover {
   border-radius: 8px;
 }
 
+.formulario-login h2,
 .modificar-equipo h2,
 .modificar-empleado h2,
 .modificar-ticket h2,
@@ -293,6 +330,7 @@ tr:hover {
   color: #0a3d62;
 }
 
+.formulario-login form label,
 .modificar-equipo form label,
 .modificar-empleado form label,
 .modificar-ticket form label,
@@ -305,7 +343,7 @@ tr:hover {
 }
 
 
-
+.formulario-login input,
 .modificar-equipo form input,
 .modificar-equipo form select,
 .modificar-equipo form button,
@@ -334,7 +372,7 @@ tr:hover {
 }
 
 
-
+.formulario-login form button,
 .modificar-equipo form button,
 .modificar-empleado form button,
 .modificar-ticket form button,
@@ -347,6 +385,7 @@ tr:hover {
   margin-top: 20px;
 }
 
+.formulario-login form button:hover,
 .modificar-equipo form button:hover,
 .modificar-empleado form button:hover,
 .modificar-ticket form button:hover,
@@ -371,52 +410,12 @@ tr:hover {
 
 
 
-/* --------------------------------------------------------------- LOGGIN EMPLEADO ----------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------- LOGGIN ----------------------------------------------------------------------------------------------------- */
 
 
-
-.contenedor-login {
-    max-width: 350px;
-    margin: 40px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-.contenedor-login h2 {
-    text-align: center;
-}
-
-.contenedor-login label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.contenedor-login input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-}
-
-.contenedor-login button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.contenedor-login button:hover {
-    background-color: #135ba1;
-}
 
 .error {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
 }

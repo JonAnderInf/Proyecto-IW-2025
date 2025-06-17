@@ -35,18 +35,38 @@
 
     <script src="{% static 'js/scripts.js' %}"></script>
 
-    <footer>
-        <div class="contenedor-footer">
-            <div class="contacto">
-                <h2>Contacto</h2>
-                <p>Email: Aerotech.SL@example.com</p>
-                <p>Teléfono: (+34) 945 454 569</p>
-            </div>
+   <footer>
+    <div class="contenedor-footer">
+        <div class="contacto">
+            <h2>Aerotech</h2>
+            <p>Email: contacto@aerotech.com</p>
+            <p>Teléfono: (+34) 945 454 569</p>
+            <p>Dirección: Calle Industria 12, Vitoria-Gasteiz</p>
         </div>
-        <div class="derechos">
-            <p>&copy; 2025 Todos los derechos reservados</p>
+
+        <div class="enlaces">
+            <h2>Enlaces útiles</h2>
+            <ul>
+                <li><a href="{% url 'lista-empleados' %}">Empleados</a></li>
+                <li><a href="{% url 'lista-equipos' %}">Equipos</a></li>
+                <li><a href="{% url 'lista-tickets' %}">Tickets</a></li>
+            </ul>
         </div>
-    </footer>
+
+        <div class="legal">
+            <h2>Legal</h2>
+            <ul>
+                <li><a href="https://www.privacypolicies.com/live/9d6de6b4-80f4-40c6-9232-d4abdc58b8f9" target="_blank">Política de privacidad</a></li>
+                <li><a href="https://www.termsfeed.com/live/2b4e7f90-3e99-4a44-8cc5-739e8aa362a6" target="_blank">Términos de uso</a></li>
+                <li><a href="https://www.avisolegal.com/ejemplo-aviso-legal" target="_blank">Aviso legal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="derechos">
+        <p>&copy; 2025 Aerotech. Todos los derechos reservados.</p>
+    </div>
+</footer>
 
 
 
