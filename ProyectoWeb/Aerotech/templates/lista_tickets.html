@@ -44,8 +44,8 @@
       <td class="estado">{{ ticket.estado }}</td>
       <td>{{ ticket.tipo }}</td>
       <td>{{ ticket.urgencia }}</td>
-      <td>{{ ticket.fecha_apertura }}</td>
-      <td>{{ ticket.fecha_resolucion }}</td>
+      <td>{{ ticket.fecha_apertura|date:"d/m/y" }}</td>
+      <td>{{ ticket.fecha_resolucion|date:"d/m/y" }}</td>
       <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
         <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
         <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a>

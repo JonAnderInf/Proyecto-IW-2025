@@ -51,8 +51,8 @@
         <td>{{ equipo.modelo }}</td>
         <td>{{ equipo.marca }}</td>
         <td>{{ equipo.tipo }}</td>
-        <td>{{ equipo.fecha_adquisicion }}</td>
-        <td>{{ equipo.fecha_puesta_marcha }}</td>
+        <td>{{ equipo.fecha_adquisicion|date:"d/m/y" }}</td>
+        <td>{{ equipo.fecha_puesta_marcha|date:"d/m/y" }}</td>
         <td>{{ equipo.planta }}</td>
         <td>
           <a href="{% url 'detalles-equipo' equipo.id %}">Detalles</a> |
