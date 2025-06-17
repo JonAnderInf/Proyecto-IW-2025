@@ -70,11 +70,6 @@ class EliminarEmpleado(DeleteView):
     template_name = 'eliminar_empleado.html'
     success_url = reverse_lazy('lista-empleados')
 
-    
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
-        if "empleado_id" not in request.session:
-            return redirect("login-empleado")
-        return super().dispatch(request, *args, **kwargs)
 
     
 
@@ -90,12 +85,6 @@ class ModificarEmpleado(UpdateView):
     template_name = 'modificar_empleado.html'
     form_class = EmpleadoForm
     success_url = reverse_lazy('lista-empleados')
-
-    
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
-        if "empleado_id" not in request.session:
-            return redirect("login-empleado")
-        return super().dispatch(request, *args, **kwargs)
 
     
 

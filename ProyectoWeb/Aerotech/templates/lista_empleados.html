@@ -13,7 +13,9 @@
             <th>Email</th>
             <th>Username</th>
             <th>Departamento</th>
+            {% if request.session.empleado_id %}
             <th>Acciones</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -24,19 +26,26 @@
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.username }}</td>
             <td>{{ empleado.departamento}}</td>
+            {% if request.session.empleado_id %}
             <td>
                 <a href="{% url 'detalles-empleado' empleado.id %}">Detalles</a> |
                 <a href="{% url 'eliminar-empleado' empleado.id %}">Borrar</a> |
                 <a href="{% url 'modificar-empleado' empleado.id %}">Modificar</a>
             </td>
+            {% endif %}
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4">No hay empleados disponibles.</td>
+            {% if request.session.empleado_id %}
+            <td colspan="6">No hay empleados disponibles.</td>
+            {% else %}
+            <td colspan="5">No hay empleados disponibles.</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
 
 <a class="btn" href="{% url 'home' %}">Volver</a>
 
