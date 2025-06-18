@@ -6,12 +6,14 @@ from django.views.generic import ListView, DeleteView, DetailView, CreateView, U
 from django.contrib import messages
 
 
+
 # --------------------------------------------------------------------------------------- CAMBIO DE ESTADO FETCH/POST--------------------------------------------------------------------
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 import json
+
 # ---------------------------------------------------------------------------------------LOGGER--------------------------------------------------------------------------------------------------
 import logging
 logger = logging.getLogger('proyecto')
@@ -130,8 +132,12 @@ class ListaTickets(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['estados'] = Ticket.objects.values_list('estado', flat=True).distinct()
+        estados = Ticket.objects.values_list('estado', flat=True)
+        context['estados'] = list(set(estados)) 
         return context
+
+
+
 
 # vista de creación de tickets
 class CrearTicket(CreateView):
@@ -203,8 +209,12 @@ class ListaEquipos(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['marcas'] = Equipo.objects.values_list('marca', flat=True).distinct()
-        context['tipos'] = Equipo.objects.values_list('tipo', flat=True).distinct()
+        marcas = Equipo.objects.values_list('marca', flat=True) 
+        tipos = Equipo.objects.values_list('tipo', flat=True) 
+
+        context['marcas'] = list(set(marcas))
+        context['tipos'] = list(set(tipos))
+
         return context
 
 

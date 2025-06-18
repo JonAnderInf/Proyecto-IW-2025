@@ -87,7 +87,6 @@ function activarToggleInformacion() {
     });
 }
 
-// ------------------------------------------------------FUNCIONALIDAD 5: Mostrar mensaje emergente enviar formulario-------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------------Lanzar todas las funciones al cargar-----------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
