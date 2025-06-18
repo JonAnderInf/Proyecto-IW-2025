@@ -61,7 +61,7 @@ function autocalcularUsername() {
 }
 // --------------------------------------------------FUNCIONALIDAD 3: Generar <select> desde array--------------------------------------------------------------------------------------
 function TipoDepartamentos() {
-    const departamentos = ['RRHH', 'Marketing', 'IT', 'Contabilidad', 'Ventas'];
+    const departamentos = ['Dirección', 'Mantenimiento', 'Logística'];
     const select = document.getElementById('departamento');
     if (!select) return;
 
