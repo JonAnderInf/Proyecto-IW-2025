@@ -22,51 +22,51 @@
 </form>
 
 <div class="lista_informacion">
-<table>
-  <thead>
-    <tr>
-      <th>Referencia</th>
-      <th>Título</th>
-      <th>Estado</th>
-      <th>Tipo</th>
-      <th>Urgencia</th>
-      <th>Fecha Apertura</th>
-      <th>Fecha Resolución</th>
-      <th>Acciones</th>
-      <th>Cambio de Estado</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for ticket in tickets %}
-    <tr id="ticket-{{ ticket.id }}">
-      <td>{{ ticket.referencia }}</td>
-      <td>{{ ticket.titulo }}</td>
-      <td class="estado">{{ ticket.estado }}</td>
-      <td>{{ ticket.tipo }}</td>
-      <td>{{ ticket.urgencia }}</td>
-      <td>{{ ticket.fecha_apertura|date:"d/m/y" }}</td>
-      <td>{{ ticket.fecha_resolucion|date:"d/m/y" }}</td>
-      <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
-        <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
-        <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a>
-      </td>
-      <td>
-        <button type="button" onclick="cambiarEstado({{ ticket.id }})">
-          {% if ticket.estado == 'abierto' %}
-          Cambiar a cerrado
-          {% else %}
-          Cambiar a abierto
-          {% endif %}
-        </button>
-      </td>
-    </tr>
-    {% empty %}
-    <tr>
-      <td colspan="7">No se encontraron tickets con ese estado.</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th>Referencia</th>
+        <th>Título</th>
+        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Urgencia</th>
+        <th>Fecha Apertura</th>
+        <th>Fecha Resolución</th>
+        <th>Acciones</th>
+        <th>Cambio de Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ticket in tickets %}
+      <tr id="ticket-{{ ticket.id }}">
+        <td>{{ ticket.referencia }}</td>
+        <td>{{ ticket.titulo }}</td>
+        <td class="estado">{{ ticket.estado }}</td>
+        <td>{{ ticket.tipo }}</td>
+        <td>{{ ticket.urgencia }}</td>
+        <td>{{ ticket.fecha_apertura|date:"d/m/y" }}</td>
+        <td>{{ ticket.fecha_resolucion|date:"d/m/y" }}</td>
+        <td> <a href="{% url 'detalle-ticket' ticket.id %}">Detalles</a> |
+          <a href="{% url 'eliminar-ticket' ticket.id %}">Borrar</a> |
+          <a href="{% url 'modificar-ticket' ticket.id %}">Modificar</a>
+        </td>
+        <td>
+          <button type="button" onclick="cambiarEstado({{ ticket.id }})">
+            {% if ticket.estado == 'abierto' %}
+            Cambiar a cerrado
+            {% else %}
+            Cambiar a abierto
+            {% endif %}
+          </button>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7">No se encontraron tickets con ese estado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
 </div>
 
