@@ -1,7 +1,7 @@
 # Proyecto-IW-2025
 Proyecto IW 2025, Grupo 1.
 Repositorio GitHub: https://github.com/JonAnderInf/Proyecto-IW-2025.git
-VIDEO COMPARTIDO POR DRIVE, ENLACE:
+VIDEO COMPARTIDO POR GITHUB Y EN EL COMPRIMIDO
 
 
 Funcionalidad adicional: 
