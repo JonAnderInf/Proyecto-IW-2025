@@ -35,7 +35,7 @@ class DetalleEmpleado(DetailView):
     template_name = 'detalles_empleado.html'
     context_object_name = 'empleado'
     
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs):  
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -52,7 +52,7 @@ class CrearEmpleado(CreateView):
     success_url = reverse_lazy('lista-empleados')
 
 
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs): 
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -122,7 +122,7 @@ class ListaTickets(ListView):
 
 
     
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs):  
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -147,7 +147,7 @@ class CrearTicket(CreateView):
     success_url = reverse_lazy('lista-tickets') 
 
     
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs):  
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -200,7 +200,7 @@ class ListaEquipos(ListView):
 
 
     
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs):  
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -234,7 +234,7 @@ class CrearEquipo(CreateView):
 
 
     
-    def dispatch(self, request, *args, **kwargs):  # Prueba para el logger y protección de navegación
+    def dispatch(self, request, *args, **kwargs): 
         if "empleado_id" not in request.session:
             return redirect("login-empleado")
         return super().dispatch(request, *args, **kwargs)
@@ -285,7 +285,7 @@ def login_empleado(request):
             empleado = Empleado.objects.get(username=username, password=password)
             request.session["empleado_id"] = empleado.id
             request.session["departamento"] = empleado.departamento
-            return redirect("home")  # La vista del home en nuestro caso o sino la lista de empleados
+            return redirect("home")  
         except Empleado.DoesNotExist:
             return render(request, "login-empleado.html", {"error": "Credenciales incorrectas"})
     
@@ -301,6 +301,6 @@ def logout_empleado(request):
 
 
 def logout_empleado(request):
-    request.session.flush()  # Borra los datos del empleado creado en este caso
+    request.session.flush()  
     return redirect('login-empleado') 
 
